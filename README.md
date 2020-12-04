@@ -5,4 +5,5 @@ Solving [Advent of Code 2020](https://adventofcode.com/2020/), each puzzle in a 
  1. Erlang
  2. Prolog
  3. Clojure
- 4. ...
+ 4. AWK
+ 5. ...
