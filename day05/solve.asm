@@ -109,24 +109,24 @@ putcr:
 ;; (from http://map.grauw.nl/sources/external/z80bits.html#5.1)
 putdec:
     ld e, 0
-	ld  bc, -10000
-	call _putdec1
-	ld bc, -1000
-	call _putdec1
-	ld bc, -100
-	call _putdec1
-	ld c, -10
-	call _putdec1
-	ld c, b
+    ld  bc, -10000
+    call _putdec1
+    ld bc, -1000
+    call _putdec1
+    ld bc, -100
+    call _putdec1
+    ld c, -10
+    call _putdec1
+    ld c, b
 
 _putdec1:
     ld a, $ff
 
 _putdec2:
     inc a
-	add hl, bc
-	jr c, _putdec2
-	sbc hl, bc
+    add hl, bc
+    jr c, _putdec2
+    sbc hl, bc
 
     and a
     jr nz, _putdec3

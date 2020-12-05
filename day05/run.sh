@@ -1,4 +1,4 @@
 #!/bin/sh
 
-z80asm solve.z80 -o solve.z8b
+z80asm -o solve.z8b solve.asm
 z80golf solve.z8b
