@@ -6,4 +6,5 @@ Solving [Advent of Code 2020](https://adventofcode.com/2020/), each puzzle in a 
  2. Prolog
  3. Clojure
  4. AWK
- 5. ...
+ 5. [Z80golf](https://esolangs.org/wiki/Z80golf)
+ 6. ...
