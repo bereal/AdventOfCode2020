@@ -1,27 +1,39 @@
-proc readGroup(all: var set[char], common: var set[char]): bool =
+import sequtils
+import strformat
+
+
+type Group = tuple
+    all: int
+    common: int
+
+proc `+`(g1: Group, g2: Group): Group =
+    (g1.all + g2.all, g1.common + g2.common)
+
+
+const letters = {'a'..'z'}
+
+iterator readGroups: Group =
     var line: string
-    common = {'a'..'z'}
-    all = {}
+    var common = letters
+    var all: set[char] = {}
 
     while readLine(stdin, line):
         if len(line) == 0:
-            return true
+            yield (len(all), len(common))
+            common = letters
+            all = {}
+            continue
 
         var cur: set[char]
         for c in line:
             incl(cur, c)
+
         common = common * cur
         all = all + cur
 
-    return len(all) > 0
+    if len(all) > 0:
+        yield (len(all), len(common))
 
 
-var common, all: set[char]
-var countAll = 0
-var countCommon = 0
-while readGroup(all, common):
-    countAll += len(all)
-    countCommon += len(common)
-
-echo countAll
-echo countCommon
+var g: Group = foldl(toSeq(readGroups), a + b)
+echo fmt"{g.all} {g.common}"
