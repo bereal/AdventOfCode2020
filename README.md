@@ -7,4 +7,5 @@ Solving [Advent of Code 2020](https://adventofcode.com/2020/), each puzzle in a 
  3. Clojure
  4. AWK
  5. [Z80golf](https://esolangs.org/wiki/Z80golf)
- 6. ...
+ 6. [Nim](https://nim-lang.org/)
+ 7. ...
