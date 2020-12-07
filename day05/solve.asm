@@ -2,36 +2,37 @@ putchar:    equ $8000
 getchar:    equ $8003
 CR:         equ $a
 
-
 main:
     call read_input
 
     call find_max
     call putdec
-    call putcr
+    ld a, ' '
+    call putchar
 
     call find_mine
     call putdec
-    call putcr
+    ld a, CR
+    call putchar
 
     halt
 
 
 ;; Read all tickets
+;; set tickets[i] to 1 when the seat i is taken
 read_input:
     ld de, tickets
 
     call read_ticket
     ret c
 
-    ld de, tickets
     add hl, de
-    ld (hl), 1
+    inc (hl)
 
     jr read_input
 
 
-;; Read seat number to HL
+;; Read seat number as a bitmask to HL
 ;; Set C flag at the end of input
 read_ticket:
     ld hl, 0
@@ -44,14 +45,16 @@ _read_loop:
     cp CR
     jr z, _read_loop
 
-    ; in B and R bit 2 is 0, in F and L it's 1
+    ;; in B and R bit 2 is 0, in F and L it's 1
+    ;; a <- !a_2
     sra a
     sra a
     and 1
     xor 1
 
+    ;; hl <- (hl << 1) + a
     add hl, hl
-    add a, l
+    add l
     ld l, a
 
     djnz _read_loop
@@ -78,8 +81,8 @@ _find_max_loop:
 
 ;; Find mine seat, return in HL
 find_mine:
-    xor a
-    ld de, -1
+    xor a      ;; last 3 seats status in the lowest bits
+    ld de, -1  ;; previous set number
     ld hl, tickets
 
 _find_mine_loop:
@@ -88,7 +91,7 @@ _find_mine_loop:
     sla a
     add a, (hl)
     and 7
-    cp 5
+    cp 5  ;; 101b, previous seat is mine
     jr nz, _find_mine_loop
 
     push de
@@ -96,20 +99,11 @@ _find_mine_loop:
     ret
 
 
-;; Print end of line
-putcr:
-    push af
-    ld a, CR
-    call putchar
-    pop af
-    ret
-
-
 ;; Print decimal from HL
 ;; (from http://map.grauw.nl/sources/external/z80bits.html#5.1)
 putdec:
     ld e, 0
-    ld  bc, -10000
+    ld bc, -10000
     call _putdec1
     ld bc, -1000
     call _putdec1
@@ -132,7 +126,7 @@ _putdec2:
     jr nz, _putdec3
 
     or e
-    ret z
+    ret z  ;; suppress leading zeros
     xor a
 
 _putdec3:
@@ -141,5 +135,5 @@ _putdec3:
     call putchar
     ret
 
-
+;; here be data
 tickets:
