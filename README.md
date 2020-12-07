@@ -8,4 +8,5 @@ Solving [Advent of Code 2020](https://adventofcode.com/2020/), each puzzle in a 
  4. [AWK](https://www.gnu.org/software/gawk/)
  5. [Z80golf](https://esolangs.org/wiki/Z80golf)
  6. [Nim](https://nim-lang.org/)
- 7. ...
+ 7. [Raku](https://raku.org/)
+ 8. ...
