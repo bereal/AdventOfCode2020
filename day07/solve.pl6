@@ -14,7 +14,7 @@ grammar BagGrammar {
     rule list { [<bag-amount>* % <.separator> | <no-other> ] }
     rule bag-amount { <number> <.ws> <bag> }
 
-    rule no-other { 'no' <.ws> 'other' <.ws> 'bags' }
+    token no-other { 'no' <.ws> 'other' <.ws> 'bags' }
     token bagKW { [ bag | bags ] }
     token feature { <:alpha>+ }
     token separator { <.ws> ',' <.ws> }
@@ -41,14 +41,14 @@ sub read-bags {
 }
 
 sub build-reverse-graph(@bags) {
-    # build hash bag name -> bags may be contained it
+    # build hash bag name -> bags it may be contained in
     my %graph;
     for @bags -> $bag {
         for $bag.content.keys -> $name {
             if %graph{$name}:exists {
                 %graph{$name}.push($bag.description);
             } else {
-                %graph{$name} = @[$bag.description];
+                %graph{$name} = [$bag.description];
             }
         }
     }
@@ -57,25 +57,21 @@ sub build-reverse-graph(@bags) {
 
 sub solve1(@bags) {
     my %graph = build-reverse-graph @bags;
-    my %seen;
-    my @queue;
-
-    @queue.push("shiny gold");
+    my $seen = SetHash.new;
+    my @queue = ["shiny gold"];
 
     while @queue.elems {
         my $cur = @queue.pop;
-          if %graph{$cur}:exists {
-            for %graph{$cur} -> @new {
-                for @new -> $i {
-                    if %seen{$i}:!exists {
-                        @queue.push($i);
-                        %seen{$i} = 1;
-                    }
+        for (%graph{$cur} || []) -> @parents {
+            for @parents {
+                if !$seen{$_} {
+                    @queue.push($_);
+                    $seen.set($_);
                 }
             }
         }
     }
-    return %seen.keys.elems;
+    return $seen.elems;
 }
 
 sub solve2(@bags) {
