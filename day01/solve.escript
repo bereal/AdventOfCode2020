@@ -8,35 +8,29 @@ read(L) -> case io:fread("", "~d") of
 end.
 
 
-part1(L) -> part1(L, sets:new()).
-
-part1([H|T], Seen) ->
-    Found = sets:is_element(2020 - H, Seen),
-    if
-        Found -> H * (2020 - H);
-        true -> part1(T, sets:add_element(H, Seen))
-    end.
+prod(L) -> lists:foldr(fun (X, Y) -> X*Y end, 1, L).
 
 
-part2(L) ->
-    {ok, V} = part2(L, [], 3, 2020),
+find_sum(L, N, Sum) ->
+    {ok, V} = find_sum(L, N, Sum, []),
     V.
 
-part2([H|T], Chosen, N, Sum)  ->
-    Fallthrough = fun() -> part2(T, Chosen, N, Sum) end,
+find_sum([H|T], N, Sum, Chosen)  ->
     Found = (H == Sum) and (N == 1),
     if
-        Found -> {ok, H * lists:foldr(fun (X, Y) -> X*Y end, 1, Chosen)};
-        H < Sum -> case part2(T, [H|Chosen], N-1, Sum-H) of
+        Found -> {ok, [H|Chosen]};
+        H < Sum -> case find_sum(T, N-1, Sum-H, [H|Chosen]) of
             {ok, V} -> {ok, V};
-            _ -> Fallthrough()
+            _ -> find_sum(T, N, Sum, Chosen)
         end;
-        true -> Fallthrough()
+        true -> fail
     end;
 
-part2([], _, _, _) -> fail.
+find_sum([], _, _, _) -> fail.
 
 
 main(_) ->
-    L = read(),
-    io:format("~p ~p~n", [part1(L), part2(L)]).
+    L = lists:sort(read()),
+    Part1 = prod(find_sum(L, 2, 2020)),
+    Part2 = prod(find_sum(L, 3, 2020)),
+    io:format("~p ~p~n", [Part1, Part2]).
