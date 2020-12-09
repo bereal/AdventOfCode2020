@@ -30,7 +30,8 @@ _Puzzle_: [Report Repair](https://adventofcode.com/2020/day/1). Finding numbers 
 To be honest, I don't know why I chose it for the first day, just something that came to my mind first.
 Solving simple puzzles in Erlang may be an enternaining and useful exercise, but they don't demonstrate the reason it exists well.
 Erlang was created to develop huge distributed telecommunication system, so the language itself is just an interface
-to the powerful virtual machine. Outside of this context it looks like an old dynamically-typed functional language
+to the powerful virtual machine. Outside of the context when you need to handle 100500 kilorequests per millisecond
+and handle nuclear explosions in the datacenter gracefully it looks like an old dynamically-typed functional language
 with weird Prolog-like syntax. Which it is, but I still like it, and it matches the day 1 puzzle just well.
 Unfortunately, I've never had a real use case for it.
 
@@ -98,7 +99,9 @@ _Puzzle_: [Custom Customs](https://adventofcode.com/2020/day/6) - Unions and int
 Disclaimer: I had no idea about Nim before and this is going to be a subjective first impression. I realize,
 that most of the features that Nim advertises cannot appear in a 50-lines snippet and I think I'll give it another
 try someday. But currently it feels that the authors were pulling all the features they enjoy most
-and I am failing to see the common idea behind the language and the library, which leaves the eclectic impression of a [Homer Simpson's car](https://static.wikia.nocookie.net/simpsons/images/0/05/TheHomer.png).
+and I am failing to see the common idea behind the language and the library, which leaves the eclectic impression of
+[Homer Simpson's car](https://static.wikia.nocookie.net/simpsons/images/0/05/TheHomer.png). And oh God, it's case-insensitive.
+Moreover, it ignores underscores in names, so `snake == camel`, if you see, what I mean.
 
 
 ### Day 7: Raku
@@ -109,12 +112,12 @@ _Knowledge_: 0
 
 _Puzzle_: [Handy Haversack](https://adventofcode.com/2020/day/7) - Parse and traverse a tree-like structure.
 
-Forget what I said about Nim's being eclectic. Now, this is the proper Frankenstein's monster that grew up
+Forget what I said about Nim's being eclectic. Now, this is the proper Frankenstein's monster that evolved
 from a domain-specific language. I recall using Perl more than a decade ago, and I don't remember liking it
 with its `$variable` `@name` `%prefixes`, automagically created variables and million ways to do the same simple
 things, which may be good when you write, but may suck when you read. As for Perl 6, I have never seen it before.
-Few days ago I learned that Perl 6 was renamed to Raku long ago, so decided to give it a shot.
-It certainly was worth it, especially because tools to build grammars and parsers are embedded into the language,
+Few days ago I learned that Perl 6 was renamed to Raku long ago, that's how little I know about it.
+It certainly was worth trying, especially because tools to build grammars and parsers are embedded into the language,
 which is an interesting concept. But other than that, this is way too far from what I'm used to.
 
 
@@ -129,3 +132,19 @@ _Puzzle_: [Handheld Halting](https://adventofcode.com/2020/day/8) - Emulate and 
 I have almost never tried F# before, since I had very little business with .Net. Wikipedia mentions F# among
 dialects of OcaML, which doesn't tell me a lot, because I have not used it either. At the first glance it's
 what I would expect from a functional language, no surprises, neither good nor bad.
+
+
+### Day 9: Pascal
+
+_Site_: https://www.freepascal.org/
+
+_Knowledge_: 2-
+
+_Puzzle_: [Encoding Error](https://adventofcode.com/2020/day/9) - Search in arrays.
+
+Pascal and occasionally Delphi were my main languages in 1996-1999, and I wanted
+to refresh my memories. I think I'd rather have Pascal remain in my memory a nice and friendly
+language, with which I wrote my first linked lists etc, but during this exercise everything
+in it seemed so awkward and backward, that I'll hardly want to touch it again.
+I didn't even bother to polish the code or look for a more elegant solution
+(I don't think there's much to improve though). Sorry, old friend, you didn't age well.
