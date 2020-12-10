@@ -165,5 +165,5 @@ prevent you from doing something too stupid and spend hours in debug. While doin
 was able to try higher-level constructs, such as currying and filters, but didn't try Factor's
 flavour of object-oriented programming and metaprogramming, so will definitely get back to it someday.
 To be honest, being busy struggling with the language, I failed to find the solution for the second part
-fully myself, so I got a hint about "tribbonacci numbers" at reddit. But even then it wasn't the easiest
+fully myself, so I got a hint about "tribonacci numbers" at reddit. But even then it wasn't the easiest
 coding in my life.
