@@ -11,13 +11,35 @@ IN: solve
 
 : split-head ( seq -- seq n ) dup first swap rest swap ;
 
+
+! Part 1
+
 : solve-1- ( assoc seq -- n ) dup empty?
     [ drop dup 1 swap at swap 3 swap at * ]
     [ split-head pick inc-at solve-1- ]
     if ;
 
-: solve-1 ( seq -- n ) normalize-input differentiate H{ } swap solve-1- ;
+: solve-1 ( seq -- n ) H{ } swap solve-1- ;
 
-: main ( -- ) read-input solve-1 . ;
+
+! Part 2
+
+: ntrib ( n -- n ) { 1 1 2 4 7 13 24 44 } nth ;
+
+: solve-2- ( n n seq -- n ) dup empty?
+    [ 2drop ]
+    [ split-head 1 =
+        [ swap 1 + swap solve-2- ] [ -rot ntrib * 0 rot solve-2- ] if
+    ]
+    if ;
+
+: solve-2 ( seq -- n ) 1 0 rot solve-2- ;
+
+
+: main ( -- )
+    read-input
+    normalize-input
+    differentiate
+    dup solve-1 swap solve-2 swap . . ;
 
 MAIN: main

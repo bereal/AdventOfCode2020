@@ -27,7 +27,7 @@ _Knowledge_: 2
 
 _Puzzle_: [Report Repair](https://adventofcode.com/2020/day/1). Finding numbers with the given sum in a list.
 
-To be honest, I don't know why I chose it for the first day, just something that came to my mind first.
+I don't really know why I chose it for the first day, just something that came to my mind first.
 Solving simple puzzles in Erlang may be an enternaining and useful exercise, but they don't demonstrate the reason it exists well.
 Erlang was created to develop huge distributed telecommunication system, so the language itself is just an interface
 to the powerful virtual machine. Outside of the context when you need to handle 100500 kilorequests per millisecond
@@ -94,7 +94,7 @@ _Site_: https://nim-lang.org/
 
 _Knowledge_: 0
 
-_Puzzle_: [Custom Customs](https://adventofcode.com/2020/day/6) - Unions and intersections of sets.
+_Puzzle_: [Custom Customs](https://adventofcode.com/2020/day/6). Unions and intersections of sets.
 
 Disclaimer: I had no idea about Nim before and this is going to be a subjective first impression. I realize,
 that most of the features that Nim advertises cannot appear in a 50-lines snippet and I think I'll give it another
@@ -110,7 +110,7 @@ _Site_: https://raku.org/
 
 _Knowledge_: 0
 
-_Puzzle_: [Handy Haversack](https://adventofcode.com/2020/day/7) - Parse and traverse a tree-like structure.
+_Puzzle_: [Handy Haversack](https://adventofcode.com/2020/day/7). Parse and traverse a tree-like structure.
 
 Forget what I said about Nim's being eclectic. Now, this is the proper Frankenstein's monster that evolved
 from a domain-specific language. I recall using Perl more than a decade ago, and I don't remember liking it
@@ -127,7 +127,7 @@ _Site_: https://fsharp.org/
 
 _Knowledge_: 0
 
-_Puzzle_: [Handheld Halting](https://adventofcode.com/2020/day/8) - Emulate and fix a program in a tiny language.
+_Puzzle_: [Handheld Halting](https://adventofcode.com/2020/day/8). Emulate and fix a program in a tiny language.
 
 I have almost never tried F# before, since I had very little business with .Net. Wikipedia mentions F# among
 dialects of OcaML, which doesn't tell me a lot, because I have not used it either. At the first glance it's
@@ -140,7 +140,7 @@ _Site_: https://www.freepascal.org/
 
 _Knowledge_: 2-
 
-_Puzzle_: [Encoding Error](https://adventofcode.com/2020/day/9) - Search in arrays.
+_Puzzle_: [Encoding Error](https://adventofcode.com/2020/day/9). Search in arrays.
 
 Pascal and occasionally Delphi were my main languages in 1996-1999, and I wanted
 to refresh my memories. I think I'd rather have Pascal remain in my memory a nice and friendly
@@ -148,3 +148,22 @@ language, with which I wrote my first linked lists etc, but during this exercise
 in it seemed so awkward and backward, that I'll hardly want to touch it again.
 I didn't even bother to polish the code or look for a more elegant solution
 (I don't think there's much to improve though). Sorry, old friend, you didn't age well.
+
+
+### Day 10: Factor
+
+_Site_: https://factorcode.org/
+
+_Knowledge_: -1
+
+_Puzzle_: [Adapter Array](https://adventofcode.com/2020/day/10). Count combinations in array.
+
+I had at least some idea about the languages I used in the previous days, but this one was a total surprise.
+I had very little experience with stack-based languages, so it feels very alien.
+This thing really made my rusty cogs turn. The best thing about Factor is its static checks that
+prevent you from doing something too stupid and spend hours in debug. While doing this exercise I
+was able to try higher-level constructs, such as currying and filters, but didn't try Factor's
+flavour of object-oriented programming and metaprogramming, so will definitely get back to it someday.
+To be honest, being busy struggling with the language, I failed to find the solution for the second part
+fully myself, so I got a hint about "tribbonacci numbers" at reddit. But even then it wasn't the easiest
+coding in my life.
