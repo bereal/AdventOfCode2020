@@ -160,10 +160,26 @@ _Puzzle_: [Adapter Array](https://adventofcode.com/2020/day/10). Count combinati
 
 I had at least some idea about the languages I used in the previous days, but this one was a total surprise.
 I had very little experience with stack-based languages, so it feels very alien.
-This thing really made my rusty cogs turn. The best thing about Factor is its static checks that
-prevent you from doing something too stupid and spend hours in debug. While doing this exercise I
-was able to try higher-level constructs, such as currying and filters, but didn't try Factor's
-flavour of object-oriented programming and metaprogramming, so will definitely get back to it someday.
-To be honest, being busy struggling with the language, I failed to find the solution for the second part
-fully myself, so I got a hint about "tribonacci numbers" at reddit. But even then it wasn't the easiest
-coding in my life.
+This thing really made my rusty cogs turn. A nice thing about Factor is its static checks that
+verify how the stack is used. For example, if a function is declared as
+
+    : my-func ( x y -- z ) ...
+
+it means that it's expected to consume two topmost values on the stack, and put one instead.
+(It's also ok just to consume one, so that the math adds up.) For example, the following function are valid:
+
+    : my-func ( x y -- z ) 3 * swap dup * +             ;  ! z = x^2 + 3*y
+
+    : my-func ( x y -- z ) 2dup > [ drop ] [ nip ] if  ;  ! z = max(x, y)
+
+but this one is not:
+
+    : my-func ( x y -- z ) * 3 ;  ! leaves two values on the stack instead of declared one
+
+
+While doing this exercise I was able to try higher-level constructs, such as currying and filters,
+but didn't try Factor's flavour of object-oriented programming and metaprogramming, so will definitely
+get back to it someday.
+To be honest, being busy struggling with the language, I failed to find the solution
+for the second part fully myself, so I got a hint about "tribonacci numbers" at reddit.
+But even then it wasn't the easiest coding in my life.
