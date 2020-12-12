@@ -11,14 +11,10 @@ class Point
     end
 
     def rotate(angle)
-        angle = angle % 360
-        case angle
-        when 90 then
-            @x, @y = @y, -@x
-        when 180 then
-            @x, @y = -@x, -@y
-        when 270 then
-            @x, @y = -@y, @x
+        case angle % 360
+            when 90  then @x, @y = @y, -@x
+            when 180 then @x, @y = -@x, -@y
+            when 270 then @x, @y = -@y, @x
         end
     end
 
@@ -32,6 +28,18 @@ class Point
         dy = distance * waypoint.y
         @x += dx
         @y += dy
+    end
+
+    def move_to_angle(angle, distance)
+        dx = 0
+        dy = 0
+        case angle % 360
+            when 0   then dx = distance
+            when 90  then dy = distance
+            when 180 then dx = -distance
+            when 270 then dy = -distance
+        end
+        move(dx, dy)
     end
 
     def distance
@@ -50,32 +58,20 @@ class SimpleShip
         @angle = 0
     end
 
-    def move_angle(dist)
-        case @angle
-        when 0 then
-            @loc.move(dist, 0)
-        when 90
-            @loc.move(0, dist)
-        when 180
-            @loc.move(-dist, 0)
-        when 270
-            @loc.move(0, -dist)
-        end
-    end
-
     def rotate(angle)
         @angle = (@angle + angle) % 360
     end
 
     def command(name, arg)
         case name
-            when 'F' then move_angle(arg)
-            when 'B' then move_angle(-arg)
+            when 'F' then @loc.move_to_angle(@angle, arg)
+            when 'B' then @loc.move_to_angle(@angle, -arg)
 
             when 'N' then @loc.move(0, -arg)
             when 'S' then @loc.move(0, arg)
             when 'W' then @loc.move(-arg, 0)
             when 'E' then @loc.move(arg, 0)
+
             when 'R' then rotate(arg)
             when 'L' then rotate(-arg)
         end
@@ -97,10 +93,12 @@ class ShipWithWaypoint
         case name
             when 'F' then @loc.move_towards(@waypoint, arg)
             when 'B' then @loc.move_towards(@waypoint, arg)
+
             when 'N' then @waypoint.move(-arg, 0)
             when 'S' then @waypoint.move(arg, 0)
             when 'W' then @waypoint.move(0, -arg)
             when 'E' then @waypoint.move(0, arg)
+
             when 'R' then @waypoint.rotate(arg)
             when 'L' then @waypoint.rotate(-arg)
         end
