@@ -18,6 +18,21 @@ I estimated my knowledge of each language by 0 to 4 scale, roughly meaning:
  - 3: used at work before, but time passes
  - 4: full proficency
 
+### Languages
+
+ 1. [Erlang](#day-1-erlang)
+ 2. [Prolog](#day-2-prolog)
+ 3. [Clojure](#day-3-clojure)
+ 4. [AWK](#day-4-awk)
+ 5. [Z80 assembly](#day-5-z80-assembly)
+ 6. [Nim](#day-6-nim)
+ 7. [Raku](#day-7-raku)
+ 8. [F#](#day-8-f)
+ 9. [Pascal](#day-9-pascal)
+ 10. [Factor](#day-10-factor)
+ 11. [x86 assembly](#day-11-x86-assembly)
+ 12. [Ruby](#day-12-ruby)
+
 
 ### Day 1: Erlang
 
