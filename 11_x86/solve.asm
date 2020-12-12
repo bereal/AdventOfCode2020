@@ -10,11 +10,33 @@ area:
     .one    resb area.length
     .two    resb area.length
 
+
 buf: resb 32
 
+border   equ ' '
 occupied equ '#'
 vacant   equ 'L'
 floor    equ '.'
+
+section .data
+
+scanner:
+    .n  dd 0
+        dd -area.width
+    .s  dd 0
+        dd area.width
+    .w  dd 0
+        dd -1
+    .e  dd 0
+        dd 1
+    .nw dd 0
+        dd -area.width - 1
+    .ne dd 0
+        dd -area.width + 1
+    .sw dd 0
+        dd area.width - 1
+    .se dd 0
+        dd area.width + 1
 
 
 section .rodata
@@ -45,10 +67,10 @@ prefill:
     mov ecx, area.length
     add ecx, ecx
 
-_prefill_loop:
-    mov [edx], byte '.'
+.prefill_loop:
+    mov [edx], byte border
     inc edx
-    loop _prefill_loop
+    loop .prefill_loop
 
     pop ecx, edx
     ret
@@ -58,26 +80,87 @@ read_input:
     mov edx, area.height - 2
     mov ecx, area.one
     mov ecx, area.one + area.width + 1
-    ; push eax
-    ; mov eax, area.width + 1
-    ; call print_decimal
-    ; pop eax
 
-_read_loop:
-    ; mov [ecx-1], byte '!'
+.read_loop:
     push edx
-    mov eax, 3               ; sys_read
+    mov eax, 3               ; sys.read
     xor ebx, ebx
     mov edx, area.width-1    ; length ( real width + \n )
     int 80h
 
     add ecx, area.width-2
-    mov [ecx], byte '.'
+    mov [ecx], byte border
     add ecx, 2
 
     pop edx
     dec edx
-    jnz _read_loop
+    jnz .read_loop
+    ret
+
+
+;; eax = cell ptr
+init_scanner:
+    pushad
+    mov esi, scanner
+    mov ebx, 0
+    mov ecx, 8
+
+.init_loop:
+    mov edx, eax
+    add edx, [esi + ebx + 4]
+    mov [esi + ebx], edx
+
+    add ebx, 8
+    loop .init_loop
+
+    popad
+    ret
+
+
+scan:
+    push eax, ebx, ecx, edx
+
+.scan_search_loop:
+    mov edx, scanner
+    mov ecx, 8
+    xor al, al
+
+.scan_cell_loop:
+    mov ebx, [edx]
+    mov ah, [ebx]
+    cmp ah, floor
+    jne .scan_next
+
+    inc al
+    add ebx, [edx+4]
+    mov [edx], ebx
+.scan_next:
+    add edx, 8
+    loop .scan_cell_loop
+
+    test al, al
+    jnz .scan_search_loop
+
+    pop eax, ebx, ecx, edx
+    ret
+
+
+count_occupied_in_scanner:
+    push ebx, ecx, edx
+    mov ebx, scanner
+    mov ecx, 8
+    xor eax, eax
+.count_scanner_loop:
+    mov edx, [ebx]
+    mov ah, byte [edx]
+    cmp ah, occupied
+    jne .count_scanner_next
+    inc al
+.count_scanner_next:
+    add ebx, 8
+    loop .count_scanner_loop
+    xor ah, ah
+    pop ebx, ecx, edx
     ret
 
 
@@ -86,20 +169,20 @@ count_occupied:
     mov edx, area.one
     mov al, [area.phase]
     test al, al
-    jz _count_start
+    jz .count_start
     mov edx, area.two
 
-_count_start:
+.count_start:
     xor eax, eax
     mov ecx, area.length
-_count_loop:
+.count_loop:
     mov bl, [edx]
     cmp bl, occupied
-    jne _count_next
+    jne .count_next
     inc eax
-_count_next:
+.count_next:
     inc edx
-    loop _count_loop
+    loop .count_loop
 
     pop ebx, ecx, edx
     ret
@@ -121,19 +204,19 @@ print_decimal:
     mov ecx, buf
 
     mov ebx, 10000
-    call _print_add_digit
+    call .print_add_digit
     mov ebx, 1000
-    call _print_add_digit
+    call .print_add_digit
     mov ebx, 100
-    call _print_add_digit
+    call .print_add_digit
     mov ebx, 10
-    call _print_add_digit
+    call .print_add_digit
     add al, '0'
     mov [ecx], al
     inc ecx
-    jmp _print_out
+    jmp .print_out
 
-_print_add_digit:
+.print_add_digit:
     xor edx, edx
     div ebx
     add al, '0'
@@ -142,21 +225,21 @@ _print_add_digit:
     inc ecx
     ret
 
-_print_out:
+.print_out:
     mov [ecx], byte 10
     mov edx, 6
     mov ecx, buf
 
-_print_remove_trailing_loop:
+.print_remove_trailing_loop:
     xor eax, eax
     mov al, [ecx]
     cmp al, '0'
-    jne  _print_call
+    jne  .print_call
     inc ecx
     dec edx
-    jmp _print_remove_trailing_loop
+    jmp .print_remove_trailing_loop
 
-_print_call:
+.print_call:
     mov eax, 4  ; sys_write
     mov ebx, 1
     int 80h
@@ -172,10 +255,10 @@ print_map:
     mov ecx, area.one
     mov al, [area.phase]
     test al, al
-    jz _print_start
+    jz .print_start
     mov ecx, area.two
 
-_print_start:
+.print_start:
     push ebx, ecx
     mov edx, area.width
     mov eax, 4
@@ -190,97 +273,81 @@ _print_start:
 
     add ecx, area.width
     dec ebx
-    jnz _print_start
+    jnz .print_start
 
     popa
     ret
 
 
 one_step:
-    push ebp
-    mov ebp, esp
-    sub esp, 4
-    xor eax, eax
-    mov [ebp], eax
+    pusha
+    xor ecx, ecx
 
-    mov ebx, area.height-2  ; row
-    mov ecx, area.width-2   ; col
-    mov edx, (area.height-2) * area.width + area.width-2; ; offset
+    mov bh, area.height-2  ; row
+    mov bl, area.width-2   ; col
+    mov edx, (area.height-2) * area.width + area.width - 2
 
     mov esi, area.one
     mov edi, area.two
 
     mov al, [area.phase]
     test al, al
-    jz _step_start
+    jz .step_start
     xchg esi, edi
 
-_step_start:
-    mov al, [esi + edx]
-    cmp al, '.'
-    je _step_next
+.step_start:
+    mov cl, [esi + edx]
+    cmp cl, border
+    je .step_loop_next
 
-    push ebx, ecx
-    xor ah, ah
+    cmp cl, floor
+    je .step_update
 
-    mov ebx, area.width + 1
-    call _step_count_vacant
-    mov ebx, area.width
-    call _step_count_vacant
-    mov ebx, area.width - 1
-    call _step_count_vacant
-    mov ebx, 1
-    call _step_count_vacant
-    mov ebx, -1
-    call _step_count_vacant
-    mov ebx, -area.width-1
-    call _step_count_vacant
-    mov ebx, -area.width
-    call _step_count_vacant
-    mov ebx, -area.width+1
-    call _step_count_vacant
-    pop ebx, ecx
+    lea eax, [esi + edx]
+    call init_scanner
+%ifenv PART2
+    call scan
+%endif
+    call count_occupied_in_scanner
 
-    cmp al, 'L'
-    jne _step_seat_occupied
-    cmp ah, 8
-    jne _step_update
-    mov al, '#'
-    inc dword [ebp]
-    jmp _step_update
+    cmp cl, occupied
+    jne .step_not_occcupied
+%ifenv PART2
+    cmp al, 5
+%else
+    cmp al, 4
+%endif
 
-_step_seat_occupied:
-    cmp ah, 5
-    jge _step_update
-    inc dword [ebp]
-    mov al, 'L'
+    jl .step_update
+    mov ch, 1
+    mov cl, vacant
+    jmp .step_loop_next
 
-_step_update:
-    mov [edi + edx], al
+.step_not_occcupied:
+    cmp cl, vacant
+    jne .step_update
+    test al, al
+    jnz .step_update
+    mov ch, 1
+    mov cl, occupied
 
-_step_next:
+.step_update:
+    mov [edi + edx], cl
+
+.step_loop_next:
     dec edx
-    dec ecx
-    jnz _step_start
+    dec bl
+    jnz .step_start
 
-    mov ecx, area.width - 2
+    mov bl, area.width-2
     sub edx, 2
-    dec ebx
-    jnz _step_start
+
+    dec bh
+    jnz .step_start
 
     call switch_phase
-    mov eax, [ebp]
-    add esp, 4
-    pop ebp
-    ret
-
-_step_count_vacant:
-    add ebx, edx
-    mov cl, [esi + ebx]
-    cmp cl, '#'
-    je _step_count_vacant_exit
-    inc ah
-_step_count_vacant_exit:
+    test ch, ch
+    popa
     ret
 
 
@@ -290,7 +357,7 @@ _start:
 
 converge_loop:
     call one_step
-    test eax, eax
+    call one_step
     jnz converge_loop
 
     call count_occupied

@@ -189,7 +189,15 @@ But even then it wasn't the easiest coding in my life.
 
 ### Day 11: x86 assembly
 
-(Part 1 complete, part 2 TBD)
+_Knowledge_: 2
+
+_Puzzle_: [Seating System](https://adventofcode.com/2020/day/11). A modified Conway's Game of Life.
+
+The puzzle looked like a perfect match for assembly, and the first part was quite easy, but the second one took me a while.
+The hardest thing was not the logic per se, but unifying the both parts and reusing the code.
+In the end I was able to find the approach where both parts stand just two lines apart.
+For each cell there's a "scanner" that checks its surroundings.
+In the case of the second part, the scanner expands until it finds a seat in each direction.
 
 
 ### Day 12: Ruby
