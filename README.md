@@ -183,3 +183,18 @@ get back to it someday.
 To be honest, being busy struggling with the language, I failed to find the solution
 for the second part fully myself, so I got a hint about "tribonacci numbers" at reddit.
 But even then it wasn't the easiest coding in my life.
+
+
+### Day 11: x86 assembly
+
+(Part 1 complete, part 2 TBD)
+
+
+### Day 12: Ruby
+
+_Knowledge_: 1
+
+_Site_: https://www.ruby-lang.org/
+
+_Puzzle_: [Rain Risk](https://adventofcode.com/2020/day/12). Navigate points on a plane
+
