@@ -35,6 +35,8 @@ and handle nuclear explosions in the datacenter gracefully it looks like an old 
 with weird Prolog-like syntax. Which it is, but I still like it, and it matches the day 1 puzzle just well.
 Unfortunately, I've never had a real use case for it.
 
+As for the puzzle, it can be brute-forced, but the recursive search can be way faster if the array is
+sorted beforehand.
 
 ### Day 2: Prolog
 
