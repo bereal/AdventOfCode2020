@@ -1,12 +1,12 @@
 section .bss
 
 area:
-    .width  equ (96 + 2)
+    .width  equ (96 + 2) ; width + border
     .height equ (90 + 2)
     .length equ area.width * area.height
 
-    .phase   resb 1
-    .changed resb 1
+    ; using two area copies to simplify the update
+    .phase   resb 1 ; which copy is in use
     .one    resb area.length
     .two    resb area.length
 
@@ -21,8 +21,8 @@ floor    equ '.'
 section .data
 
 scanner:
-    .n  dd 0
-        dd -area.width
+    .n  dd 0 ; current north-side cell of the scanner (byte ptr)
+        dd -area.width ; increment to move one step further (const)
     .s  dd 0
         dd area.width
     .w  dd 0
@@ -61,6 +61,8 @@ global _start
     %endrep
 %endmacro
 
+
+;; fill areas with the border code
 prefill:
     push ecx, edx
     mov edx, area.one
@@ -98,9 +100,10 @@ read_input:
     ret
 
 
+;; init scanner for the cell
 ;; eax = cell ptr
 init_scanner:
-    pushad
+    pusha
     mov esi, scanner
     mov ebx, 0
     mov ecx, 8
@@ -113,10 +116,12 @@ init_scanner:
     add ebx, 8
     loop .init_loop
 
-    popad
+    popa
     ret
 
 
+;; expand scanner borders until each cell
+;; is not a floor (i.e. a L, # or a border)
 scan:
     push eax, ebx, ecx, edx
 
@@ -278,7 +283,8 @@ print_map:
     popa
     ret
 
-
+;; apply the rules to each cell in the current area
+;; changes are made to the shadow one, then switch the phase
 one_step:
     pusha
     xor ecx, ecx
@@ -312,6 +318,7 @@ one_step:
 
     cmp cl, occupied
     jne .step_not_occcupied
+
 %ifenv PART2
     cmp al, 5
 %else
@@ -356,7 +363,6 @@ _start:
     call read_input
 
 converge_loop:
-    call one_step
     call one_step
     jnz converge_loop
 
