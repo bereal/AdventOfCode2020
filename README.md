@@ -198,3 +198,5 @@ _Site_: https://www.ruby-lang.org/
 
 _Puzzle_: [Rain Risk](https://adventofcode.com/2020/day/12). Navigate points on a plane
 
+After struggle with assembly I wanted something relaxing yet new, so Ruby it is. The puzzle is very easy, too.
+
