@@ -202,6 +202,10 @@ To be honest, being busy struggling with the language, I failed to find the solu
 for the second part fully myself, so I got a hint about "tribonacci numbers" at reddit.
 But even then it wasn't the easiest coding in my life.
 
+_Update_: After I published the solution on /r/adventofcode, /u/chunes made a
+[really nice review](https://www.reddit.com/r/adventofcode/comments/ka8z8x/2020_day_10_solutions/gfnl8wi?utm_source=share&utm_medium=web2x&context=3)
+and suggested how I can improve the code. I applied most of his suggestions, and left some
+until the time when I can fully understand them.
 
 ### Day 11: x86 assembly
 
