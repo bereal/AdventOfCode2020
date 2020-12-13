@@ -32,6 +32,7 @@ I estimated my knowledge of each language by 0 to 4 scale, roughly meaning:
  10. [Factor](#day-10-factor)
  11. [x86 assembly](#day-11-x86-assembly)
  12. [Ruby](#day-12-ruby)
+ 13. [Julia](#day-13-julia)
 
 
 ### Day 1: Erlang
@@ -225,3 +226,34 @@ _Puzzle_: [Rain Risk](https://adventofcode.com/2020/day/12). Navigate points on 
 
 After struggle with assembly I wanted something relaxing yet new, so Ruby it is. The puzzle is very easy, too.
 
+
+### Day 13: Julia
+
+_Knowledge_: 0
+
+_Site_: https://julialang.org/
+
+_Puzzle_: [Shuttle Search](https://adventofcode.com/2020/day/13). Congruences.
+
+
+The first part of the puzzle looked so easy, that it was tempting to try something like
+[Scratch](https://scratch.mit.edu/) with it. I remembered that it was the day 13 already, so it's not
+supposed to be that simple.
+So I decided to take a sneak peek, and wrote a Python one-liner for it. It turned out that the second part
+is not quite as trivial, though three words crossed my mind immediately:
+[Chinese Remainder Theorem](https://en.wikipedia.org/wiki/Chinese_remainder_theorem). The schedules constraints
+form a system of congruences, and the algorithm is known.
+
+So, Julia it is. Never tried it before. It's supposed to be really good and fast at things
+where Python+Numpy is usually the first option these days. Inspired by R, Matlab and Python on one hand,
+and Lisp on the other hand.
+Being mainly purposed for scientific computations, Julia has powerful built-in array operations
+and features like [broadcasting](https://docs.julialang.org/en/v1/manual/arrays/#Broadcasting), when you can
+convert an operation on scalars to an operation on arrays literally with a single dot.
+There are also cool higher-level features like multiple method dispatch and powerful
+metaprogramming (code is data, too, like in Lisp), but, unfortunately, in the final version of the solution
+none of those things found any use.
+My plan is to try Julia with [cryptopals challenge](https://cryptopals.com/) someday.
+
+Oh yes, and Julia indexes the arrays starting from `1`, which I guess is supposed
+to emphasize its scientific purpose.
