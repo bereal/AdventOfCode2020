@@ -1,7 +1,7 @@
 ## Advent of Code 2020 - Polyglot Edition
 
 This year I all of a sudden got an idea of trying to solve the Advent of Code challenge in 25 different languages.
-I didn't know that few people already did or tried to do this before.
+I didn't know that [few people](#other-peoples-attempts) already did or tried to do this before.
 Below are the rants about my experience with each of the languages I chose.
 
 Few generic consideration:
@@ -9,6 +9,7 @@ Few generic consideration:
  - it makes sense to start with the languages you're familiar the least, because the task complexity tends to grow
  - some languages are better for some puzzles due to their features
  - the goal is not just solve the puzzle, but to get the sense of the language and try to write idiomatic code
+ - extra points for reaching the maximum logic reuse between the 2 parts of each puzzle
 
 I estimated my knowledge of each language by 0 to 4 scale, roughly meaning:
 
@@ -17,6 +18,15 @@ I estimated my knowledge of each language by 0 to 4 scale, roughly meaning:
  - 2: spent some time using or deliberately learning it
  - 3: used at work before, but time passes
  - 4: full proficency
+
+### Other People's Attempts
+
+ * [Izzy Miller](https://github.com/izzystardust/advent-solutions) (2016)
+ * [Thomas ten Katte](https://github.com/ttencate/aoc2016) (2016)
+ * [Benjamin Kraft](https://github.com/benjaminjkraft/aoc2017) (2017)
+ * [Oleg Yamnikov](https://github.com/yamnikov-oleg/adventofcode2017) (2017)
+ * [Laurence Woodman](https://techtinkering.com/articles/advent-of-code-2018-25-days-25-languages/) (2018)
+ * [Roza Gutiérrez](https://m.signalvnoise.com/my-polyglot-advent-of-code/) (2019)
 
 ### Languages
 
@@ -82,6 +92,8 @@ metaprogramming etc cannot be demonstrated. But `loop-recur` and short `#(...)`-
 
 
 ### Day 4: AWK
+
+_Site_: http://www.awklang.org/
 
 _Knowledge_: 1
 
