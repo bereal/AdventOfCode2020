@@ -4,26 +4,90 @@ extern crate reduce;
 extern crate regex;
 
 use regex::Regex;
+use std::collections::HashMap;
 use std::io;
 use std::io::BufRead;
 
 struct Mask {
     or: u64,
     and: u64,
+    float: u64,
 }
 
 impl Mask {
-    fn new(and: u64, or: u64) -> Mask {
-        Mask { or: or, and: and }
+    fn empty() -> Mask {
+        Mask {
+            and: u64::MAX,
+            or: 0,
+            float: 0,
+        }
     }
 
     fn apply(&self, value: u64) -> u64 {
         value & self.and | self.or
     }
+
+    fn float(&self, value: u64) -> FloatingIterator {
+        let mut float = self.float;
+        let mut initial = 0;
+        while float != 0 {
+            if float & 1 != 0 {
+                initial = (initial << 1) + 1;
+            }
+            float >>= 1;
+        }
+
+        FloatingIterator {
+            base: value | self.or,
+            float: self.float,
+            cur: initial,
+            end: false,
+        }
+    }
+}
+
+struct FloatingIterator {
+    base: u64,
+    float: u64,
+    cur: u32,
+    end: bool,
+}
+
+impl Iterator for FloatingIterator {
+    type Item = u64;
+
+    fn next(&mut self) -> Option<u64> {
+        if self.end {
+            None
+        } else {
+            let mut float_bit = 1 << 35;
+            let mut cur = self.cur;
+            let mut and = u64::MAX;
+            let mut or = 0;
+
+            while float_bit != 0 {
+                let (and_upd, or_upd, shift) = match (float_bit & self.float, cur & 1) {
+                    (0, _) => (1, 0, 0),
+                    (_, 1) => (0, 0, 1),
+                    (_, _) => (1, 1, 1),
+                };
+                and = (and << 1) | and_upd;
+                or = (or << 1) | or_upd;
+                cur >>= shift;
+                float_bit >>= 1;
+            }
+            if self.cur == 0 {
+                self.end = true;
+            } else {
+                self.cur -= 1;
+            }
+            Some(self.base & and | or)
+        }
+    }
 }
 
 struct Assignment {
-    address: usize,
+    address: u64,
     value: u64,
 }
 
@@ -42,17 +106,23 @@ fn parse_mask(line: &String) -> Option<Instruction> {
     let cap = RE.captures(line.as_str())?;
     let mut and: u64 = 0xffffffffffff;
     let mut or: u64 = 0;
+    let mut fluct: u64 = 0;
 
-    for ch in cap[0].chars() {
-        let (and_upd, or_upd) = match ch {
-            '1' => (1, 1),
-            '0' => (0, 0),
-            _ => (1, 0),
+    for ch in cap[1].chars() {
+        let (and_upd, or_upd, fluct_upd) = match ch {
+            '1' => (1, 1, 0),
+            '0' => (0, 0, 0),
+            _ => (1, 0, 1),
         };
         and = (and << 1) | and_upd;
         or = (or << 1) | or_upd;
+        fluct = (fluct << 1) | fluct_upd;
     }
-    let mask = Mask::new(and, or);
+    let mask = Mask {
+        and: and,
+        or: or,
+        float: fluct,
+    };
     Some(SetMask(mask))
 }
 
@@ -81,16 +151,23 @@ fn read_input() -> Vec<Instruction> {
 
 fn main() {
     let program = read_input();
-    let mut mem: [u64; 0xffff] = [0; 0xffff];
-    let mut mask = Mask::new(0, 0);
+    let mut mem1: HashMap<u64, u64> = HashMap::new();
+    let mut mem2: HashMap<u64, u64> = HashMap::new();
+    let mut mask = Mask::empty();
 
     for command in program {
         match command {
             SetMask(m) => mask = m,
-            Assign(a) => mem[a.address] = mask.apply(a.value),
+            Assign(a) => {
+                mem1.insert(a.address, mask.apply(a.value));
+                for addr in mask.float(a.address) {
+                    mem2.insert(addr, a.value);
+                }
+            }
         }
     }
 
-    let sum: u64 = mem.iter().sum();
-    println!("{}", sum);
+    let sum1: u64 = mem1.values().sum();
+    let sum2: u64 = mem2.values().sum();
+    println!("{} {}", sum1, sum2);
 }
