@@ -1,6 +1,5 @@
 #[macro_use]
 extern crate lazy_static;
-extern crate reduce;
 extern crate regex;
 
 use regex::Regex;
