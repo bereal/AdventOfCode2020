@@ -33,6 +33,7 @@ I estimated my knowledge of each language by 0 to 4 scale, roughly meaning:
  11. [x86 assembly](#day-11-x86-assembly)
  12. [Ruby](#day-12-ruby)
  13. [Julia](#day-13-julia)
+ 14. [Rust](#day-14-rust)
 
 
 ### Day 1: Erlang
@@ -261,3 +262,26 @@ My plan is to try Julia with [cryptopals challenge](https://cryptopals.com/) som
 
 Oh yes, and Julia indexes the arrays starting from `1`, which I guess is supposed
 to emphasize its scientific purpose.
+
+
+### Day 14. Rust
+
+_Knowledge_: 1
+
+_Site_: https://www.rust-lang.org/
+
+_Puzzle_: [Docking Data](https://adventofcode.com/2020/day/14). Bit mask manipulations.
+
+Oh my, oh my, finally I did Rust. Was looking forward to it. I believe, Rust is the most
+ambitious programming lanugages of the past decade. It's supposed to be better at everything C++
+is good at, only faster, safer, more expressive and without the legacy of C.
+But, like C++, it's not an easy language I'd just play with occasionally for some small things.
+Ownership and borrowing, type system, lifetimes - all takes time to understand.
+The good news is that the documentation is awesome and the community is friendly. Even the compiler
+errors look friendly. I did some of the aforementioned cryptopals challenges in Rust before,
+so had some idea what to expect.
+
+I'm not proud of my puzzle solution, but looks good enough for starters.
+There's a lot of bit manipulations, which could be done more elegant.
+I enjoyed implementing the floating bits logic with an iterator, though. If I paid more attention
+to the text of the puzzle (bit manipulations rules changed in the second part), I'd waste less time.
