@@ -39,22 +39,21 @@ fn parse_mask(line: &String) -> Option<Instruction> {
         static ref RE: Regex = Regex::new(r"mask = ([10X]+)").unwrap();
     }
 
-    RE.captures(line.as_str()).and_then(|cap| {
-        let mut and: u64 = 0xffffffffffff;
-        let mut or: u64 = 0;
+    let cap = RE.captures(line.as_str())?;
+    let mut and: u64 = 0xffffffffffff;
+    let mut or: u64 = 0;
 
-        for ch in cap[0].chars() {
-            let (and_upd, or_upd) = match ch {
-                '1' => (1, 1),
-                '0' => (0, 0),
-                _ => (1, 0),
-            };
-            and = (and << 1) | and_upd;
-            or = (or << 1) | or_upd;
-        }
-        let mask = Mask::new(and, or);
-        Some(SetMask(mask))
-    })
+    for ch in cap[0].chars() {
+        let (and_upd, or_upd) = match ch {
+            '1' => (1, 1),
+            '0' => (0, 0),
+            _ => (1, 0),
+        };
+        and = (and << 1) | and_upd;
+        or = (or << 1) | or_upd;
+    }
+    let mask = Mask::new(and, or);
+    Some(SetMask(mask))
 }
 
 fn parse_assignment(line: &String) -> Option<Instruction> {
@@ -62,11 +61,10 @@ fn parse_assignment(line: &String) -> Option<Instruction> {
         static ref RE: Regex = Regex::new(r"mem\[(\d+)\] = (\d+)").unwrap();
     }
 
-    RE.captures(line.as_str()).and_then(|cap| {
-        let address = cap[1].parse().unwrap();
-        let value = cap[2].parse().unwrap();
-        Some(Assign(Assignment { address, value }))
-    })
+    let cap = RE.captures(line.as_str())?;
+    let address = cap[1].parse().unwrap();
+    let value = cap[2].parse().unwrap();
+    Some(Assign(Assignment { address, value }))
 }
 
 fn read_input() -> Vec<Instruction> {
