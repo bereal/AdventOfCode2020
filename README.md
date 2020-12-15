@@ -44,6 +44,7 @@ I estimated my knowledge of each language by 0 to 4 scale, roughly meaning:
  12. [Ruby](#day-12-ruby)
  13. [Julia](#day-13-julia)
  14. [Rust](#day-14-rust)
+ 15. [Scratch](#day-15-mit-scratch)
 
 
 ### Day 1: Erlang
@@ -297,3 +298,24 @@ I'm not proud of my puzzle solution, but looks good enough for starters.
 There's a lot of bit manipulations, which could be done more elegant.
 I enjoyed implementing the floating bits logic with an iterator, though. If I paid more attention
 to the text of the puzzle (bit manipulations rules changed in the second part), I'd waste less time.
+
+
+### Day 15. MIT Scratch
+
+_Knowledge_: 1
+
+_Site_: https://scratch.mit.edu/
+
+_Puzzle_: [Rambunctious Recitation](https://adventofcode.com/2020/day/15) (now, that's a new word). Numeric sequences.
+
+Scratch is a very simple toy language that's supposed to teach kids how to program.
+You compose blocks of code into syntax trees to make sprites do funny things.
+To be honest, I am not sure how good this idea is, I mean not the idea of teaching kids, but the approach.
+In fact, Scratch is mainly focused on syntax, and syntax is not the most challenging or interesting part of programming.
+So once you get quite familiar with it, which is quite soon, the environment will get in your way.
+But the intention of making programming look less intimidating is nice.
+
+The puzzle is quite trivial, the only roadblock was that Scratch doesn't have dictionaries / hashmaps / whatever you call'em
+(there are [extensions](https://scratch.mit.edu/discuss/topic/330289/)), though). So I had to replace a dict with a
+pre-allocated list of 2000 values. Solving the first part without artificial delays takes a couple of minutes.
+The second part is obviously out of question, so I quickly hacked it with Python :)
