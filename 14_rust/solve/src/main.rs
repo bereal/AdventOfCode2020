@@ -103,7 +103,7 @@ fn parse_mask(line: &String) -> Option<Instruction> {
     }
 
     let cap = RE.captures(line.as_str())?;
-    let mut and: u64 = 0xffffffffffff;
+    let mut and: u64 = u64::MAX;
     let mut or: u64 = 0;
     let mut fluct: u64 = 0;
 
