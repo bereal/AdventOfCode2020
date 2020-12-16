@@ -45,6 +45,7 @@ I estimated my knowledge of each language by 0 to 4 scale, roughly meaning:
  13. [Julia](#day-13-julia)
  14. [Rust](#day-14-rust)
  15. [Scratch](#day-15-mit-scratch)
+ 16. [C++](#day-16-c)
 
 
 ### Day 1: Erlang
@@ -351,3 +352,29 @@ pre-allocated list of 2000 values. Solving the first part without artificial del
 The second part is obviously out of question, so I quickly hacked it with Python :)
 
 [Solution](15_scratch)
+
+
+### Day 16. C++
+
+_Knowledge_: 3
+
+_Site_: https://isocpp.org/
+
+_Puzzle_: [Ticket Translation](https://adventofcode.com/2020/day/16). Constraints resolution.
+
+I don't know what I can tell about C++. It's C++. Who doesn't love its friendly error messages:
+
+    /usr/include/c++/10.2.0/bits/stl_iterator.h: In instantiation of ‘std::back_insert_iterator<_Container>& std::back_insert_iterator<_Container>::operator=(typename _Container::value_type&&) [with _Container = std::set<std::__cxx11::basic_string<char> >; typename _Container::value_type = std::__cxx11::basic_string<char>]’:
+    /usr/include/c++/10.2.0/bits/stl_algo.h:4313:12:   required from ‘_OIter std::transform(_IIter, _IIter, _OIter, _UnaryOperation) [with _IIter = __gnu_cxx::__normal_iterator<const constraint*, std::vector<constraint> >; _OIter = std::back_insert_iterator<std::set<std::__cxx11::basic_string<char> > >; _UnaryOperation = solve2(const input&)::<lambda(auto:5&)>]’
+    solve.cpp:48:60:   required from here
+    /usr/include/c++/10.2.0/bits/stl_iterator.h:622:13: error: ‘class std::set<std::__cxx11::basic_string<char> >’ has no member named ‘push_back’
+    622 |  container->push_back(std::move(__value));
+        |  ~~~~~~~~~~~^~~~~~~~~
+
+I mean, if you see a language that can get away with stuff like that, it must be a great language, right?
+I did some professional development in it like 10 years ago, but these days C++ is like those statues from Doctor Who.
+When you blink, it moves forward. I cannot say I enjoyed this short reunion with C++, but, after all, pain is just weakness leaving your body.
+
+The puzzle is conceptually simple, but took some time to debug. For some reason I find reasoning about tabular data challenging.
+
+[Solution](16_cpp)
