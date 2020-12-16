@@ -360,7 +360,7 @@ _Knowledge_: 3
 
 _Site_: https://isocpp.org/
 
-_Puzzle_: [Ticket Translation](https://adventofcode.com/2020/day/16). Constraints resolution.
+_Puzzle_: [Ticket Translation](https://adventofcode.com/2020/day/16). Constraint resolution.
 
 I don't know what I can tell about C++. It's C++. Who doesn't love its friendly error messages:
 

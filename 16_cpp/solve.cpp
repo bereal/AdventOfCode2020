@@ -68,31 +68,25 @@ unsigned long solve2(const input &inp) {
                        [](auto &c) { return c.first; });
     }
 
-    bool more = true;
-    while (more) {
-        more = false;
-        for (int i = 0; i < fields.size(); i++) {
-            auto &cur_cands = candidates[i];
-            if (cur_cands.size() > 1) {
-                std::vector<std::string> to_delete;
-                more = true;
-                for (auto cand : cur_cands) {
-                    if (!std::all_of(
-                            fields[i].begin(), fields[i].end(), [&](auto v) {
-                                return inp.constraints.at(cand).matches(v);
-                            })) {
-                        to_delete.push_back(cand);
-                    }
-                }
+    auto check_candidate = [&](const std::string &name, int field) {
+        return std::all_of(
+            fields[field].begin(), fields[field].end(),
+            [&](auto v) { return inp.constraints.at(name).matches(v); });
+    };
 
-                for (auto del : to_delete) {
-                    cur_cands.erase(del);
-                }
+    for (int i = 0; i < fields.size(); i++) {
+        auto &cur_cands = candidates[i];
+        std::vector<std::string> excluded;
+        std::copy_if(cur_cands.begin(), cur_cands.end(),
+                     std::back_inserter(excluded),
+                     [&](auto &name) { return !check_candidate(name, i); });
 
-                if (cur_cands.size() == 1) {
-                    found(i);
-                }
-            }
+        for (auto del : excluded) {
+            cur_cands.erase(del);
+        }
+
+        if (cur_cands.size() == 1) {
+            found(i);
         }
     }
 
