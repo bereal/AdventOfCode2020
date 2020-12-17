@@ -46,6 +46,7 @@ I estimated my knowledge of each language by 0 to 4 scale, roughly meaning:
  14. [Rust](#day-14-rust)
  15. [Scratch](#day-15-mit-scratch)
  16. [C++](#day-16-c)
+ 17. [Haskell](#day-17-haskell)
 
 
 ### Day 1: Erlang
@@ -378,3 +379,18 @@ When you blink, it moves forward. I cannot say I enjoyed this short reunion with
 The puzzle is conceptually simple, but took some time to debug. For some reason I find reasoning about tabular data challenging.
 
 [Solution](16_cpp)
+
+
+### Day 17. Haskell
+
+_Knowledge_: 2
+
+_Site_: https://www.haskell.org/
+
+_Puzzle_: [Conway Cubes](https://adventofcode.com/2020/day/17). Multi-dimensional Conway's Game of Life
+
+Current solution works in ~14 sec for both parts for me, I'm out of ideas what else I can improve.
+After realising (not without a hint), how to avoid visiting redundant cells it went there down from 25 seconds.
+Will revisit it later.
+
+[Solution](17_haskell)
