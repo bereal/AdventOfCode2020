@@ -395,4 +395,6 @@ how to visit less cells it went there down from 25 seconds.
 At this point, the solution is nearly identical to the one linked above, cannot spot any difference.
 Will revisit it later.
 
+(_update_: ahah, I was running it with `runhaskell` all along, after compiling it completes in less than 2s)
+
 [Solution](17_haskell)

@@ -1,3 +1,4 @@
 #!/bin/sh
 
-runhaskell Solve.hs < input.txt
+ghc Solve.hs
+./Solve < input.txt

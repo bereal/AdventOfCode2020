@@ -1,6 +1,6 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module Solve where
+module Main where
 
 import qualified Data.Set as S
 
