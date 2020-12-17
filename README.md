@@ -390,7 +390,9 @@ _Site_: https://www.haskell.org/
 _Puzzle_: [Conway Cubes](https://adventofcode.com/2020/day/17). Multi-dimensional Conway's Game of Life
 
 Current solution works in ~14 sec for both parts for me, I'm out of ideas what else I can improve.
-After realising (not without a hint), how to avoid visiting redundant cells it went there down from 25 seconds.
+After realising (not without a [hint](https://www.reddit.com/r/adventofcode/comments/keqsfa/2020_day_17_solutions/gg54nnv?utm_source=share&utm_medium=web2x&context=3)),
+how to visit less cells it went there down from 25 seconds.
+At this point, the solution is nearly identical to the one linked above, cannot spot any difference.
 Will revisit it later.
 
 [Solution](17_haskell)
