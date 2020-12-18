@@ -30,24 +30,27 @@ I estimated my knowledge of each language by 0 to 4 scale, roughly meaning:
 
 ### Languages
 
- 1. [Erlang](#day-1-erlang)
- 2. [Prolog](#day-2-prolog)
- 3. [Clojure](#day-3-clojure)
- 4. [AWK](#day-4-awk)
- 5. [Z80 assembly](#day-5-z80-assembly)
- 6. [Nim](#day-6-nim)
- 7. [Raku](#day-7-raku)
- 8. [F#](#day-8-f)
- 9. [Pascal](#day-9-pascal)
- 10. [Factor](#day-10-factor)
- 11. [x86 assembly](#day-11-x86-assembly)
- 12. [Ruby](#day-12-ruby)
- 13. [Julia](#day-13-julia)
- 14. [Rust](#day-14-rust)
- 15. [Scratch](#day-15-mit-scratch)
- 16. [C++](#day-16-c)
- 17. [Haskell](#day-17-haskell)
- 18. [C](#day-18-c)
+ | Day | Language  | Knowledge | Puzzle | Solution |
+ | --- | ---       | ---       | ---    | ---      |
+ | 1   | [Erlang](#day-1-erlang)   | 2 | [Report Repair](https://adventofcode.com/2020/day/1)       | [Link](01_erlang/solve.escript)  |
+ | 2   | [Prolog](#day-2-prolog)   | 1 | [Password Philosophy](https://adventofcode.com/2020/day/2) | [Link](02_prolog/solve.pl)  |
+ | 3   | [Clojure](#day-3-clojure) | 2 | [Toboggan Trajectory](https://adventofcode.com/2020/day/3) | [Link](03_clojure/src/day03/core.clj) |
+ | 4   | [AWK](#day-4-awk)         | 1 | [Password Processing](https://adventofcode.com/2020/day/4) | [Link](04_awk/solve.awk) |
+ | 5   | [Z80 assembly](#day-5-z80-assembly) | 2 | [Binary Boarding](https://adventofcode.com/2020/day/5) | [Link](05_z80/solve.asm) |
+ | 6   | [Nim](#day-6-nim)         | 0 | [Custom Customs](https://adventofcode.com/2020/day/6)   | [Link](06_nim/solve.nim) |
+ | 7   | [Raku](#day-7-raku)       | 0 | [Handy Haversack](https://adventofcode.com/2020/day/7)  | [Link](07_raku/solve.pl6) |
+ | 8   | [F#](#day-8-f)            | 0 | [Handheld Halting](https://adventofcode.com/2020/day/8) | [Link](08_fsharp/solve.fsx) |
+ | 9   | [Pascal](#day-9-pascal)   | 2 |  [Encoding Error](https://adventofcode.com/2020/day/9)  | [Link](09_pascal/solve.pas) |
+ | 10  | [Factor](#day-10-factor)  | 0 | [Adapter Array](https://adventofcode.com/2020/day/10)    | [Link](10_factor/solve/solve.factor) |
+ | 11  | [x86 assembly](#day-11-x86-assembly) | 2 | [Seating System](https://adventofcode.com/2020/day/11) | [Link](11_x86/solve.asm) |
+ | 12  | [Ruby](#day-12-ruby)      | 1 | [Rain Risk](https://adventofcode.com/2020/day/12)       | [Link](12_ruby/solve.rb)  |
+ | 13  | [Julia](#day-13-julia)    | 0 | [Shuttle Search](https://adventofcode.com/2020/day/13)  | [Link](13_julia/solve.jl) |
+ | 14  | [Rust](#day-14-rust)      | 1 | [Docking Data](https://adventofcode.com/2020/day/14)    | [Link](14_rust/solve/src/main.rs)  |
+ | 15  | [Scratch](#day-15-mit-scratch) | 1 | [Rambunctious Recitation](https://adventofcode.com/2020/day/15) | [Link](https://scratch.mit.edu/projects/464039643/) |
+ | 16  | [C++](#day-16-c)           | 3 | [Ticket Translation](https://adventofcode.com/2020/day/16) | [Link](16_cpp/solve.cpp) |
+ | 17  | [Haskell](#day-17-haskell) | 2 | [Conway Cubes](https://adventofcode.com/2020/day/17)    | [Link](17_haskell/Solve.hs) |
+ | 18  | [C](#day-18-c)             | 2 | [Operation Order](https://adventofcode.com/2020/day/18) | [Link](18_c/solve.c) |
+
 
 ### Day 1: Erlang
 
@@ -68,7 +71,7 @@ Unfortunately, I've never had a real use case for it.
 As for the puzzle, it can be brute-forced, but the recursive search can be way faster if the array is
 sorted beforehand.
 
-[Solution](01_erlang)
+[Solution](01_erlang/solve.escript) | [Up](#languages)
 
 
 ### Day 2: Prolog
@@ -83,7 +86,7 @@ Prolog is the languages they taught is in the Uni and since that I tried to use 
 Still, the paradigm shift from function calling to pattern matching is challenging every time. A very nice brain exercise.
 The puzzle had to do with validating the passwords according to certain rules, and pattern matching is a great tool for such tasks.
 
-[Solution](02_prolog)
+[Solution](02_prolog/solve.pl) | [Up](#languages)
 
 
 ### Day 3: Clojure
@@ -98,7 +101,7 @@ I'm in love-hate relations with Clojure. I love it when I write, and I hate it w
 In this particular puzzle Clojure's coolest features, such as persistent data structures, concurrency abstractions,
 metaprogramming etc cannot be demonstrated. But `loop-recur` and short `#(...)`-lambda syntax are cool.
 
-[Solution](03_clojure)
+[Solution](03_clojure/src/day03/core.clj) | [Up](#languages)
 
 
 ### Day 4: AWK
@@ -113,7 +116,7 @@ AWK is a small DSL language whose main habitat is between the pipes in text-proc
 worth trying to pay it some respect by writing more than one line for a change. Worked just fine and easy, though
 I am not sure how idiomatic is the code.
 
-[Solution](04_awk)
+[Solution](04_awk/solve.awk) | [Up](#languages)
 
 
 ### Day 5: Z80 assembly
@@ -130,7 +133,7 @@ It was luck that this puzzle was essentially about binary numbers processing, an
 to have squeezed the core solution in less than 60 lines of assembly code. 40 more lines are printing the result
 as decimals, which I mostly copy-pasted. An oh my I completely forgot how limited the instruction set is.
 
-[Solution](05_z80)
+[Solution](05_z80/solve.asm) | [Up](#languages)
 
 
 ### Day 6: Nim
@@ -148,7 +151,7 @@ and I am failing to see the common idea behind the language and the library, whi
 [Homer Simpson's car](https://static.wikia.nocookie.net/simpsons/images/0/05/TheHomer.png). And oh God, it's case-insensitive.
 Moreover, it ignores underscores in names, so `snake == camel`, if you see, what I mean.
 
-[Solution](06_nim)
+[Solution](06_nim/solve.nim) | [Up](#languages)
 
 
 ### Day 7: Raku
@@ -167,7 +170,7 @@ Few days ago I learned that Perl 6 was renamed to Raku long ago, that's how litt
 It certainly was worth trying, especially because tools to build grammars and parsers are embedded into the language,
 which is an interesting concept. But other than that, this is way too far from what I'm used to.
 
-[Solution](07_raku)
+[Solution](07_raku/solve.pl6) | [Up](#languages)
 
 
 ### Day 8: F#
@@ -182,7 +185,7 @@ I have almost never tried F# before, since I had very little business with .Net.
 dialects of OcaML, which doesn't tell me a lot, because I have not used it either. At the first glance it's
 what I would expect from a functional language, no surprises, neither good nor bad.
 
-[Solution](08_fsharp)
+[Solution](08_fsharp/solve.fsx) | [Up](#languages)
 
 
 ### Day 9: Pascal
@@ -200,7 +203,7 @@ in it seemed so awkward and backward, that I'll hardly want to touch it again.
 I didn't even bother to polish the code or look for a more elegant solution
 (I don't think there's much to improve though). Sorry, old friend, you didn't age well.
 
-[Solution](09_pascal)
+[Solution](09_pascal/solve.pas) | [Up](#languages)
 
 
 ### Day 10: Factor
@@ -242,7 +245,7 @@ _Update_: After I published the solution on /r/adventofcode, /u/chunes made a
 and suggested how I can improve the code. I applied most of his suggestions, and left some
 until the time when I can fully understand them.
 
-[Solution](10_factor)
+[Solution](10_factor/solve/solve.factor) | [Up](#languages)
 
 
 ### Day 11: x86 assembly
@@ -257,7 +260,7 @@ In the end I was able to find the approach where both parts stand just two lines
 For each cell there's a "scanner" that checks its surroundings.
 In the case of the second part, the scanner expands until it finds a seat in each direction.
 
-[Solution](11_x86)
+[Solution](11_x86/solve.asm) | [Up](#languages)
 
 
 ### Day 12: Ruby
@@ -270,7 +273,7 @@ _Puzzle_: [Rain Risk](https://adventofcode.com/2020/day/12). Navigate points on 
 
 After struggle with assembly I wanted something relaxing yet new, so Ruby it is. The puzzle is very easy, too.
 
-[Solution](12_ruby)
+[Solution](12_ruby/solve.rb) | [Up](#languages)
 
 
 ### Day 13: Julia
@@ -304,7 +307,7 @@ My plan is to try Julia with [cryptopals challenge](https://cryptopals.com/) som
 Oh yes, and Julia indexes the arrays starting from `1`, which I guess is supposed
 to emphasize its scientific purpose.
 
-[Solution](13_julia)
+[Solution](13_julia/solve.jl) | [Up](#languages)
 
 
 ### Day 14. Rust
@@ -329,7 +332,7 @@ There's a lot of bit manipulations, which could be done more elegant.
 I enjoyed implementing the floating bits logic with an iterator, though. If I paid more attention
 to the text of the puzzle (bit manipulations rules changed in the second part), I'd waste less time.
 
-[Solution](14_rust)
+[Solution](14_rust/solve/src/main.rs) | [Up](#languages)
 
 
 ### Day 15. MIT Scratch
@@ -352,7 +355,7 @@ The puzzle is quite trivial, the only roadblock was that Scratch doesn't have di
 pre-allocated list of 2000 values. Solving the first part without artificial delays takes a couple of minutes.
 The second part is obviously out of question, so I quickly hacked it with Python :)
 
-[Solution](15_scratch)
+[Solution](https://scratch.mit.edu/projects/464039643/) | [Up](#languages)
 
 
 ### Day 16. C++
@@ -378,7 +381,7 @@ When you blink, it moves forward. I cannot say I enjoyed this short reunion with
 
 The puzzle is conceptually simple, but took some time to debug. For some reason I find reasoning about tabular data challenging.
 
-[Solution](16_cpp)
+[Solution](16_cpp/solve.cpp) | [Up](#languages)
 
 
 ### Day 17. Haskell
@@ -397,7 +400,7 @@ Will revisit it later.
 
 (_update_: ahah, I was running it with `runhaskell` all along, after compiling it completes in less than 2s)
 
-[Solution](17_haskell)
+[Solution](17_haskell/Solve.hs) | [Up](#languages)
 
 
 ### Day 18. C
@@ -417,4 +420,4 @@ So, here we go, this is a simplified implementation of it, that instead of produ
 just evaluates the expression on the fly. One of my favorite algorithms, actually. Operation precedence is provided
 as a function argument.
 
-[Solution](18_c)
+[Solution](18_c/solve.c) | [Up](#languages)
