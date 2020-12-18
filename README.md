@@ -47,7 +47,7 @@ I estimated my knowledge of each language by 0 to 4 scale, roughly meaning:
  15. [Scratch](#day-15-mit-scratch)
  16. [C++](#day-16-c)
  17. [Haskell](#day-17-haskell)
-
+ 18. [C](#day-18-c)
 
 ### Day 1: Erlang
 
@@ -398,3 +398,23 @@ Will revisit it later.
 (_update_: ahah, I was running it with `runhaskell` all along, after compiling it completes in less than 2s)
 
 [Solution](17_haskell)
+
+
+### Day 18. C
+
+_Knowledge_: 2
+
+_Site_: https://www.iso.org/standard/74528.html
+
+_Puzzle_: [Operation Order](https://adventofcode.com/2020/day/18). Expression parsing
+
+I know, this puzzle allows for some smart tricks. For example, few Reddit people
+[used](https://www.reddit.com/r/adventofcode/comments/kfeldk/2020_day_18_solutions/gg87w89?utm_source=share&utm_medium=web2x&context=3)
+Julia's ability of overloading the operations. I guess, you could do a similar thing in Python, just a bit more verbose.
+But does a boy get a chance to implement the [shunting-yard algorithm](https://en.wikipedia.org/wiki/Shunting-yard_algorithm)
+every day? I remember doing that in C as a student, so it awakes nostalgic memories.
+So, here we go, this is a simplified implementation of it, that instead of producing Reverse Polish notation
+just evaluates the expression on the fly. One of my favorite algorithms, actually. Operation precedence is provided
+as a function argument.
+
+[Solution](18_c)
