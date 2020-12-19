@@ -50,6 +50,7 @@ I estimated my knowledge of each language by 0 to 4 scale, roughly meaning:
  | 16  | [C++](#day-16-c)           | 3 | [Ticket Translation](https://adventofcode.com/2020/day/16) | [Link](16_cpp/solve.cpp) |
  | 17  | [Haskell](#day-17-haskell) | 2 | [Conway Cubes](https://adventofcode.com/2020/day/17)    | [Link](17_haskell/Solve.hs) |
  | 18  | [C](#day-18-c)             | 2 | [Operation Order](https://adventofcode.com/2020/day/18) | [Link](18_c/solve.c) |
+ | 19  | [JavaScript](#day-19-javascript) | 4 | [Monster Messages](https://adventofcode.com/2020/day/19) | [Link](19_js/solve.js) |
 
 
 ### Day 1: Erlang
@@ -421,3 +422,25 @@ just evaluates the expression on the fly. One of my favorite algorithms, actuall
 as a function argument.
 
 [Solution](18_c/solve.c) | [Up](#languages)
+
+
+### Day 19. JavaScript
+
+_Knowledge_: 4
+
+_Puzzle_: [Monster Messages](https://adventofcode.com/2020/day/19). Grammars and regular expressions
+
+My first impulse was to generate a grammar using parser combinators in e.g. Scala, but then I was like _wait a sec_...
+The grammar in the first part is easily converted into a regular expression.
+So, I did it with JavaScript, a.k.a JS a.k.a ECMAScript, the ugly duckling of programming languages.
+It used to be horrible, but ES6 already looks decent for its purposes. I don't feel like bitching
+about JS anymore: first, it's boring and unoriginal, and second - it's the language number one, just deal with it.
+I chose it just because it doesn't really matter what language to use to generate regexps (though with Perl or PHP
+it could be more elegant due to recursive regexps, and yes I realize I've just used "PHP" and "elegant" in the same sentence).
+
+As I said, the first part was straightforward, but in the second, you'll have to deal with sequences
+like `a{n}b{n}` for any `n >= 1` which cannot be done without recursive regexps (see above).
+So I just used a `|`-combination of `ab`, `a{2}b{2}`, `a{3}b{3}` and `a{4}b{4}`
+which was enough for my case.
+
+[Solution](19_js/solve.js) | [Up](#languages)
