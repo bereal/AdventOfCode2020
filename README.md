@@ -51,7 +51,8 @@ I estimated my knowledge of each language by 0 to 4 scale, roughly meaning:
  | 17  | [Haskell](#day-17-haskell) | 2 | [Conway Cubes](https://adventofcode.com/2020/day/17)    | [Link](17_haskell/Solve.hs) |
  | 18  | [C](#day-18-c)             | 2 | [Operation Order](https://adventofcode.com/2020/day/18) | [Link](18_c/solve.c) |
  | 19  | [JavaScript](#day-19-javascript) | 4 | [Monster Messages](https://adventofcode.com/2020/day/19) | [Link](19_js/solve.js) |
-
+ | 20  | Postponed                    |     |   | | |
+ | 21  | [Dart](#day-21-dart)       | 2   | [Allergen Assessment](https://adventofcode.com/2020/day/21) | [Link](21_dart/solve.dart) |
 
 ### Day 1: Erlang
 
@@ -444,3 +445,22 @@ So I just used a `|`-combination of `ab`, `a{2}b{2}`, `a{3}b{3}` and `a{4}b{4}`
 which was enough for my case.
 
 [Solution](19_js/solve.js) | [Up](#languages)
+
+
+### Day 21. Dart
+
+_Knowledge_: 3
+
+_Site_: https://dart.dev/
+
+_Puzzle_: [Allergen Assessment](https://adventofcode.com/2020/day/21). Constraints resolution.
+
+Dart was supposed to replace Javascript in browsers, then it was essentially dead,
+and recently it rose from its grave to become the language of [Flutter](https://flutter.dev/).
+I don't always develop mobile apps, but when I do, I use Dart. It resembles TypeScript a lot,
+except it's not burdened with the JS legacy, like `this`, and has some nice features like streams.
+On the other hand, TS is able to use all the JS code, which is _a lot_ of code.
+
+The puzzle is essentially the same as on the [day 16](#day-16-c), just differently worded, so the solution is identical.
+
+[Solution](21_dart/solve.dart) | [Up](#languages)
