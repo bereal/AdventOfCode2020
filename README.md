@@ -51,7 +51,7 @@ I estimated my knowledge of each language by 0 to 4 scale, roughly meaning:
  | 17  | [Haskell](#day-17-haskell) | 2 | [Conway Cubes](https://adventofcode.com/2020/day/17)    | [Link](17_haskell/Solve.hs) |
  | 18  | [C](#day-18-c)             | 2 | [Operation Order](https://adventofcode.com/2020/day/18) | [Link](18_c/solve.c) |
  | 19  | [JavaScript](#day-19-javascript) | 4 | [Monster Messages](https://adventofcode.com/2020/day/19) | [Link](19_js/solve.js) |
- | 20  | Postponed                    |     |   | | |
+ | 20  | [Scala](#day-20-scala)     | 1   | [Jurassic Jigsaw](https://adventofcode.com/2020/day/20)  | [Link](20_scala/solve.scala) |
  | 21  | [Dart](#day-21-dart)       | 2   | [Allergen Assessment](https://adventofcode.com/2020/day/21) | [Link](21_dart/solve.dart) |
 
 ### Day 1: Erlang
@@ -446,6 +446,18 @@ which was enough for my case.
 
 [Solution](19_js/solve.js) | [Up](#languages)
 
+### Day 20. Scala
+
+_Knowledge_: 1
+
+_Site_: https://www.scala-lang.org/
+
+_Puzzle_: [Jurassic Jigsaw](https://adventofcode.com/2020/day/20)
+
+
+_TBD after the second part is complete_
+
+[Solution](20_scala/solve.scala) | [Up](#languages)
 
 ### Day 21. Dart
 
