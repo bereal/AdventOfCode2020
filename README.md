@@ -455,7 +455,7 @@ _Site_: https://www.scala-lang.org/
 
 _Puzzle_: [Jurassic Jigsaw](https://adventofcode.com/2020/day/20)
 
-Oh. My. God. It's less that 200 lines, but I'm exhausted. I ended up solving the second part in imperative style,
+Oh. My. God. It's less than 150 lines, but I'm exhausted. I ended up solving the second part in imperative style,
 and not ashamed. I guess, now I can see how it can be done functionally, but definitely, not today.
 I wish I could blame Scala, but it (and IntelliJ Idea) was quite helpful with all the type hints.
 Still, I'm not sure about Scala, I mean, too much stuff happen implicitly, and all the type annotations

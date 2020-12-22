@@ -17,53 +17,30 @@ object D4 extends Enumeration {
       case R3 => square.reverse.transpose
     }
   }
+
+  def allConfigs(square: Array[Array[Char]]): Seq[Array[Array[Char]]] =
+    values.toSeq.map(apply(_, square));
 }
 
-object Side extends Enumeration {
-  val Top, Right, Bottom, Left = Value
+class TileConfig(val id: Int, val body: Array[Array[Char]]) {
+  val top = body.head.mkString
+  val left = body.map(_.head).mkString
+  val right = body.map(_.last).mkString
+  val bottom = body.last.mkString
 }
 
-class TileConfig(val id: Int, val d4: D4.Value, init: Array[Array[Char]]) {
-  import Side._
-  val body = D4(d4, init)
-  val perimeter = Map(
-    Top -> body(0).mkString,
-    Right -> body.map(_.last).mkString,
-    Bottom -> body.last.mkString,
-    Left -> body.map(_(0)).mkString
-  )
-
-  val top = perimeter(Top)
-  val left = perimeter(Left)
-  val right = perimeter(Right)
-  val bottom = perimeter(Bottom)
-
-  val lookup = perimeter.toSeq.map({ case (k -> v) => (v -> k) }).toMap
-}
-
-class Tile(val id: Int, val s: Array[String]) {
-  type Row = Array[Char]
-
-  val init = s.map(_.toArray)
-  val allConfigs =
-    D4.values.toArray
-      .map(new TileConfig(id, _, init))
-      .groupBy(_.d4)
-      .view
-      .mapValues(_(0))
-      .toMap
+class Tile(val id: Int, val init: Array[Array[Char]]) {
+  val allConfigs = D4.allConfigs(init).map(new TileConfig(id, _))
 }
 
 class Area(val tiles: Seq[Tile]) {
-  import Side._
-
-  val tileConfigs = tiles.flatMap(_.allConfigs.values)
+  val tileConfigs = tiles.flatMap(_.allConfigs)
   val tileConfigsById = tileConfigs.groupBy(_.id)
   val mapSize = Math.sqrt(tiles.length).toInt
   val tileSize = tileConfigs.head.body.length
 
   val sideLookup = tileConfigs
-    .map((t) => t.perimeter(Top) -> t.id)
+    .map((t) => t.top -> t.id)
     .groupBy(_._1)
     .view
     .mapValues(_.map(_._2).toSet)
@@ -76,7 +53,7 @@ class Area(val tiles: Seq[Tile]) {
   def findCorners() = sideLookup.toSeq
     .filter(_._2.size == 1)
     .groupBy(_._2.head)
-    .filter(_._2.length == 4) // two unique sides, each is mentioned twice
+    .filter(_._2.length == 4) // two unique sides, each is mentioned twice due to mirroring
     .keys
     .toSet
 
@@ -135,20 +112,14 @@ class Area(val tiles: Seq[Tile]) {
 }
 
 object Main {
+  def readTileBody(): Array[Array[Char]] =
+    Iterator.continually(StdIn.readLine())
+      .takeWhile(s => s != null && s.length() > 0).map(_.toArray).toArray
+
   def readTile(): Option[Tile] = {
     val reg = """Tile (\d+):""".r
-
     StdIn.readLine() match {
-      case reg(id) =>
-        Some(
-          new Tile(
-            id.toInt,
-            Iterator
-              .continually(StdIn.readLine())
-              .takeWhile(s => s != null && s.length > 0)
-              .toArray
-          )
-        )
+      case reg(id) => Some(new Tile(id.toInt, readTileBody()))
       case c => None
     }
   }
@@ -163,7 +134,7 @@ object Main {
   def main(args: Array[String]): Unit = {
     val area = new Area(readInput())
     println(area.findCorners().map(_.toLong).reduce(_ * _))
-    val map = area.fillMap()
-    println(D4.values.toArray.map((D4(_, map))).map(area.findMonsters).filter(_.isDefined).head.get)
+    val sea = area.fillMap()
+    println(D4.allConfigs(sea).map(area.findMonsters).flatten.head)
   }
 }
