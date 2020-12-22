@@ -2,10 +2,16 @@ import scala.io.StdIn
 import scala.collection.mutable.{Map => MMap, Set => MSet}
 import scala.util.matching.Regex
 
+object Types {
+  type Matrix[T] = Array[Array[T]]
+}
+
 object D4 extends Enumeration {
+  import Types._
+
   val R0, R1, R2, R3, SH, SV, D1, D2 = Value
 
-  def apply(op: Value, square: Array[Array[Char]]): Array[Array[Char]] = {
+  def apply(op: Value, square: Matrix[Char]): Matrix[Char] = {
     op match {
       case R0 => square
       case SH => square.reverse
@@ -18,46 +24,37 @@ object D4 extends Enumeration {
     }
   }
 
-  def allConfigs(square: Array[Array[Char]]): Seq[Array[Array[Char]]] =
+  def allConfigs(square: Matrix[Char]): Seq[Matrix[Char]] =
     values.toSeq.map(apply(_, square));
 }
 
-class TileConfig(val id: Int, val body: Array[Array[Char]]) {
+class TileConfig(val id: Int, val body: Types.Matrix[Char]) {
   val top = body.head.mkString
   val left = body.map(_.head).mkString
   val right = body.map(_.last).mkString
   val bottom = body.last.mkString
 }
 
-class Tile(val id: Int, val init: Array[Array[Char]]) {
+class Tile(val id: Int, val init: Types.Matrix[Char]) {
   val allConfigs = D4.allConfigs(init).map(new TileConfig(id, _))
 }
 
 class Area(val tiles: Seq[Tile]) {
+  import Types._
+
   val tileConfigs = tiles.flatMap(_.allConfigs)
   val tileConfigsById = tileConfigs.groupBy(_.id)
   val mapSize = Math.sqrt(tiles.length).toInt
   val tileSize = tileConfigs.head.body.length
 
-  val sideLookup = tileConfigs
-    .map((t) => t.top -> t.id)
-    .groupBy(_._1)
-    .view
-    .mapValues(_.map(_._2).toSet)
-    .toMap
+  val sideCount = tileConfigs
+    .groupBy(_.top).view.mapValues(_.map(_.id).toSet.size).toMap
 
-  def isUnique(side: String) = {
-    sideLookup(side).size == 1
-  }
+  def isUnique(side: String) = sideCount(side) == 1
 
-  def findCorners() = sideLookup.toSeq
-    .filter(_._2.size == 1)
-    .groupBy(_._2.head)
-    .filter(_._2.length == 4) // two unique sides, each is mentioned twice due to mirroring
-    .keys
-    .toSet
+  def findCorners() = tileConfigs.filter(t => isUnique(t.top) && isUnique(t.left)).map(_.id).toSet
 
-  def fillMap(): Array[Array[Char]] = {
+  def fillMap(): Matrix[Char] = {
     val map: MMap[(Int, Int), TileConfig] = MMap()
     val pendingSet = MSet.from(tileConfigsById.keys)
     val update = (i: Int, j: Int, t: TileConfig) => {
@@ -89,7 +86,7 @@ class Area(val tiles: Seq[Tile]) {
       update(i, j, tile)
     }
 
-    val getRowMatrix: (Int) => Array[Array[Char]] = (row) =>
+    val getRowMatrix: (Int) => Matrix[Char] = (row) =>
       (1 to tileSize-2)
         .map(i => (1 to mapSize).flatMap(col => map(row, col).body(i).slice(1, tileSize-1)).toArray)
         .toArray
@@ -103,7 +100,7 @@ class Area(val tiles: Seq[Tile]) {
     }
   }
 
-  def findMonsters(sea: Array[Array[Char]]): Option[Int] = {
+  def findMonsters(sea: Matrix[Char]): Option[Int] = {
     val pattern = new Regex(s".{18}#.{${sea.length-19}}#....##....##....###.{${sea.length-19}}#..#..#..#..#..#...")
     val text = sea.map(_.mkString).mkString
     val found = findOverlapping(text, pattern)
@@ -112,7 +109,9 @@ class Area(val tiles: Seq[Tile]) {
 }
 
 object Main {
-  def readTileBody(): Array[Array[Char]] =
+  import Types._
+
+  def readTileBody(): Matrix[Char] =
     Iterator.continually(StdIn.readLine())
       .takeWhile(s => s != null && s.length() > 0).map(_.toArray).toArray
 
