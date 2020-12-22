@@ -393,7 +393,7 @@ _Knowledge_: 2
 
 _Site_: https://www.haskell.org/
 
-_Puzzle_: [Conway Cubes](https://adventofcode.com/2020/day/17). Multi-dimensional Conway's Game of Life
+_Puzzle_: [Conway Cubes](https://adventofcode.com/2020/day/17). Multi-dimensional Conway's Game of Life.
 
 Current solution works in ~14 sec for both parts for me, I'm out of ideas what else I can improve.
 After realising (not without a [hint](https://www.reddit.com/r/adventofcode/comments/keqsfa/2020_day_17_solutions/gg54nnv?utm_source=share&utm_medium=web2x&context=3)),
@@ -412,7 +412,7 @@ _Knowledge_: 2
 
 _Site_: https://www.iso.org/standard/74528.html
 
-_Puzzle_: [Operation Order](https://adventofcode.com/2020/day/18). Expression parsing
+_Puzzle_: [Operation Order](https://adventofcode.com/2020/day/18). Expression parsing.
 
 I know, this puzzle allows for some smart tricks. For example, few Reddit people
 [used](https://www.reddit.com/r/adventofcode/comments/kfeldk/2020_day_18_solutions/gg87w89?utm_source=share&utm_medium=web2x&context=3)
@@ -430,7 +430,7 @@ as a function argument.
 
 _Knowledge_: 4
 
-_Puzzle_: [Monster Messages](https://adventofcode.com/2020/day/19). Grammars and regular expressions
+_Puzzle_: [Monster Messages](https://adventofcode.com/2020/day/19). Grammars and regular expressions.
 
 My first impulse was to generate a grammar using parser combinators in e.g. Scala, but then I was like _wait a sec_...
 The grammar in the first part is easily converted into a regular expression.
@@ -455,8 +455,14 @@ _Site_: https://www.scala-lang.org/
 
 _Puzzle_: [Jurassic Jigsaw](https://adventofcode.com/2020/day/20)
 
-
-_TBD after the second part is complete_
+Oh. My. God. It's less that 200 lines, but I'm exhausted. I ended up solving the second part in imperative style,
+and not ashamed. I guess, now I can see how it can be done functionally, but definitely, not today.
+I wish I could blame Scala, but it (and IntelliJ Idea) was quite helpful with all the type hints.
+Still, I'm not sure about Scala, I mean, too much stuff happen implicitly, and all the type annotations
+are sometimes more cryptic than in C++. And forget about using it without an IDE (I tried Metals for VS Code,
+but at some point autocompletion refused to work, so I resorted to installing good old IntelliJ Idea).
+The good news is that I revisited [symmetry groups](https://en.wikipedia.org/wiki/Symmetry_group), and
+that was fun.
 
 [Solution](20_scala/solve.scala) | [Up](#languages)
 
@@ -485,11 +491,11 @@ _Knowledge_: 0
 
 _Site_: https://elixir-lang.org/
 
-_Puzzle_: [Crab Combat](https://adventofcode.com/2020/day/22). Lists and recursion
+_Puzzle_: [Crab Combat](https://adventofcode.com/2020/day/22). Lists and recursion.
 
 Elixir is Erlang in Ruby's clothes. The puzzle is all about recursive list processing, so
 a functional language is a no-brainer choice. But all the coolest features, like metaprogramming,
-polymorphism, and concurrency remained unexplored. Well, someday... Having to use `fun.()` syntax
-for variable-bound functions feels a bit awkward.
+polymorphism, and concurrency remained unexplored. Well, someday... The only remark so far:
+having to use `fun.()` syntax for variable-bound functions feels a bit awkward.
 
 [Solution](22_elixir/solve.exs) | [Up](#languages)
