@@ -53,6 +53,7 @@ I estimated my knowledge of each language by 0 to 4 scale, roughly meaning:
  | 19  | [JavaScript](#day-19-javascript) | 4 | [Monster Messages](https://adventofcode.com/2020/day/19) | [Link](19_js/solve.js) |
  | 20  | [Scala](#day-20-scala)     | 1   | [Jurassic Jigsaw](https://adventofcode.com/2020/day/20)  | [Link](20_scala/solve.scala) |
  | 21  | [Dart](#day-21-dart)       | 2   | [Allergen Assessment](https://adventofcode.com/2020/day/21) | [Link](21_dart/solve.dart) |
+ | 22  | [Elixir](#day-22-elixir)   | 0   | [Crab Combat](https://adventofcode.com/2020/day/22) | [Link](22_elixir/solve.exs) |
 
 ### Day 1: Erlang
 
@@ -461,7 +462,7 @@ _TBD after the second part is complete_
 
 ### Day 21. Dart
 
-_Knowledge_: 3
+_Knowledge_: 2
 
 _Site_: https://dart.dev/
 
@@ -476,3 +477,19 @@ On the other hand, TS is able to use all the JS code, which is _a lot_ of code.
 The puzzle is essentially the same as on the [day 16](#day-16-c), just differently worded, so the solution is identical.
 
 [Solution](21_dart/solve.dart) | [Up](#languages)
+
+
+### Day 22. Elixir
+
+_Knowledge_: 0
+
+_Site_: https://elixir-lang.org/
+
+_Puzzle_: [Crab Combat](https://adventofcode.com/2020/day/22). Lists and recursion
+
+Elixir is Erlang in Ruby's clothes. The puzzle is all about recursive list processing, so
+a functional language is a no-brainer choice. But all the coolest features, like metaprogramming,
+polymorphism, and concurrency remained unexplored. Well, someday... Having to use `fun.()` syntax
+for variable-bound functions feels a bit awkward.
+
+[Solution](22_elixir/solve.exs) | [Up](#languages)
