@@ -453,14 +453,15 @@ _Knowledge_: 1
 
 _Site_: https://www.scala-lang.org/
 
-_Puzzle_: [Jurassic Jigsaw](https://adventofcode.com/2020/day/20)
+_Puzzle_: [Jurassic Jigsaw](https://adventofcode.com/2020/day/20). A jigsaw puzzle and pattern matching.
 
 Oh. My. God. It's less than 150 lines, but I'm exhausted. I ended up solving the second part in imperative style,
 and not ashamed. I guess, now I can see how it can be done functionally, but definitely, not today.
-I wish I could blame Scala, but it (and IntelliJ Idea) was quite helpful with all the type hints.
+I wish I could blame Scala, but it (and the IDE) was quite helpful with all the autocompletions and type hints.
 Still, I'm not sure about Scala, I mean, too much stuff happen implicitly, and all the type annotations
 are sometimes more cryptic than in C++. And forget about using it without an IDE (I tried Metals for VS Code,
 but at some point autocompletion refused to work, so I resorted to installing good old IntelliJ Idea).
+
 The good news is that I revisited [symmetry groups](https://en.wikipedia.org/wiki/Symmetry_group), and
 that was fun.
 

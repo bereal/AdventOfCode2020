@@ -9,40 +9,31 @@ object Types {
 object D4 extends Enumeration {
   import Types._
 
-  val R0, R1, R2, R3, SH, SV, D1, D2 = Value
-
-  def apply(op: Value, square: Matrix[Char]): Matrix[Char] = {
-    op match {
-      case R0 => square
-      case SH => square.reverse
-      case SV => square.map(_.reverse)
-      case D1 => square.transpose
-      case D2 => square.reverse.map(_.reverse).transpose
-      case R1 => square.transpose.reverse
-      case R2 => square.reverse.map(_.reverse)
-      case R3 => square.reverse.transpose
-    }
-  }
-
-  def allConfigs(square: Matrix[Char]): Seq[Matrix[Char]] =
-    values.toSeq.map(apply(_, square));
+  def apply(m: Matrix[Char]): Seq[Matrix[Char]] = List(
+    m, // R0
+    m.reverse, // SH
+    m.map(_.reverse), // SV
+    m.transpose, // D1
+    m.reverse.map(_.reverse).transpose, // D2
+    m.transpose.reverse,  // R1
+    m.reverse.map(_.reverse), // R2
+    m.reverse.transpose // R3
+  )
 }
 
-class TileConfig(val id: Int, val body: Types.Matrix[Char]) {
-  val top = body.head.mkString
-  val left = body.map(_.head).mkString
-  val right = body.map(_.last).mkString
-  val bottom = body.last.mkString
-}
+class Tile(val id: Int, val body: Types.Matrix[Char]) {
+  lazy val top = body.head.mkString
+  lazy val left = body.map(_.head).mkString
+  lazy val right = body.map(_.last).mkString
+  lazy val bottom = body.last.mkString
 
-class Tile(val id: Int, val init: Types.Matrix[Char]) {
-  val allConfigs = D4.allConfigs(init).map(new TileConfig(id, _))
+  lazy val configs = D4(body).map(new Tile(id, _))
 }
 
 class Area(val tiles: Seq[Tile]) {
   import Types._
 
-  val tileConfigs = tiles.flatMap(_.allConfigs)
+  val tileConfigs = tiles.flatMap(_.configs)
   val tileConfigsById = tileConfigs.groupBy(_.id)
   val mapSize = Math.sqrt(tiles.length).toInt
   val tileSize = tileConfigs.head.body.length
@@ -55,15 +46,15 @@ class Area(val tiles: Seq[Tile]) {
   def findCorners() = tileConfigs.filter(t => isUnique(t.top) && isUnique(t.left)).map(_.id).toSet
 
   def fillMap(): Matrix[Char] = {
-    val map: MMap[(Int, Int), TileConfig] = MMap()
+    val map: MMap[(Int, Int), Tile] = MMap()
     val pendingSet = MSet.from(tileConfigsById.keys)
-    val update = (i: Int, j: Int, t: TileConfig) => {
+    val update = (i: Int, j: Int, t: Tile) => {
       pendingSet.remove(t.id)
       map.update((i, j), t)
     }
 
     // find a tile matching the criterias
-    val find: (TileConfig => Boolean) => TileConfig = (f) =>
+    val find: (Tile => Boolean) => Tile = (f) =>
       pendingSet.flatMap(tileConfigsById).filter(f).head
 
     for (i <- 1 to mapSize; j <- 1 to mapSize) {
@@ -134,6 +125,6 @@ object Main {
     val area = new Area(readInput())
     println(area.findCorners().map(_.toLong).reduce(_ * _))
     val sea = area.fillMap()
-    println(D4.allConfigs(sea).map(area.findMonsters).flatten.head)
+    println(D4(sea).map(area.findMonsters).flatten.head)
   }
 }
