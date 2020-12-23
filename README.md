@@ -54,6 +54,7 @@ I estimated my knowledge of each language by 0 to 4 scale, roughly meaning:
  | 20  | [Scala](#day-20-scala)     | 1   | [Jurassic Jigsaw](https://adventofcode.com/2020/day/20)  | [Link](20_scala/solve.scala) |
  | 21  | [Dart](#day-21-dart)       | 2   | [Allergen Assessment](https://adventofcode.com/2020/day/21) | [Link](21_dart/solve.dart) |
  | 22  | [Elixir](#day-22-elixir)   | 0   | [Crab Combat](https://adventofcode.com/2020/day/22) | [Link](22_elixir/solve.exs) |
+ | 23  | [Go](#day-23-go)           | 4   | [Crab Cups](https://adventofcode.com/2020/day/23)   | [Link](23_go/solve.go) |
 
 ### Day 1: Erlang
 
@@ -500,3 +501,24 @@ polymorphism, and concurrency remained unexplored. Well, someday... The only rem
 having to use `fun.()` syntax for variable-bound functions feels a bit awkward.
 
 [Solution](22_elixir/solve.exs) | [Up](#languages)
+
+
+### Day 23. Go
+
+_Knowledge_: 4
+
+_Site_: https://golang.org/
+
+_Puzzle_: [Crab Cups](https://adventofcode.com/2020/day/23). Linked Lists with a twist.
+
+So, the first part is a trap. I did it in the most obvious way, so had to start over. The challenge
+of the second part is that you have to both move values inside a list (where a linked list is a nice choice) and search for values in it
+(where it's not). Not without a hint, I recalled that things often become simpler when you deal with adjacent integer values...
+I won't spoil to much here, see the code.
+
+As for Go, it's a good example of how you can focus on solving problems you need get solved instead of following
+all the hype trends and do just fine. I really like their stance of implementing just those feature they are really sure they need.
+And it's simple. You learn it in a week or so, and then: where's the advanced part? Advanced Go is to keep using Go
+in the most simple and straightforward way. This is the way.
+
+[Solution](23_go/solve.go) | [Up](#languages)
