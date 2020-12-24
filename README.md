@@ -533,8 +533,8 @@ _Site_: https://ziglang.org/
 
 _Puzzle_: [Lobby Layout](https://adventofcode.com/2020/day/24). Hexagonal Game of Life.
 
-Never heard of Zig before, but then I saw [people](https://github.com/andrewrk/advent-of-code) [doing](https://github.com/fyrchik/aoc2020zig)
-this or the previous AoC in it. Let's see what it [promises](https://ziglang.org/#Small-simple-language):
+Never heard of Zig before, but then I saw people doing
+[this]((https://github.com/fyrchik/aoc2020zig) or the [previous](https://github.com/andrewrk/advent-of-code) AoC in it. Let's see what it [promises](https://ziglang.org/#Small-simple-language):
 
   > Focus on debugging your application rather than debugging your programming language knowledge.
 

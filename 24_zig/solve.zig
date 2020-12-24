@@ -9,7 +9,7 @@ fn addVec(v1: Vec, v2: Vec) Vec {
 
 fn followPath(path: []const Vec) Vec {
     var res = Vec{.x=0, .y=0};
-    for (in) |v| {
+    for (path) |v| {
         res = addVec(res, v);
     }
     return res;
@@ -59,7 +59,7 @@ const eqlVec = std.hash_map.getAutoEqlFn(Vec);
 const Floor = std.HashMap(Vec, bool, hashVec, eqlVec, 80);
 
 // remove white tiles
-fn cleanup(floor: *Floor) !void {
+fn cleanup(floor: *Floor) void {
     var it = floor.iterator();
     while (it.next()) |entry| {
         if (!entry.value) {
@@ -90,7 +90,7 @@ fn solve_1(in: [][]const Vec, floor: *Floor) !usize {
         cur.entry.value = if (cur.found_existing) !cur.entry.value else true;
     }
 
-    try cleanup(floor);
+    cleanup(floor);
     return floor.count();
 }
 
@@ -117,7 +117,7 @@ fn lifeTurn(floor: *Floor, a: *Allocator) !void {
         }
     }
 
-    try cleanup(floor);
+    cleanup(floor);
 }
 
 fn solve_2(floor: *Floor, a: *Allocator) !usize {
