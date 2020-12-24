@@ -1,35 +1,34 @@
 const std = @import("std");
 const Allocator = std.mem.Allocator;
 
-const Vec = struct { x: i32, y: i32 };
+// Axial coordinates
+// https://www.redblobgames.com/grids/hexagons/#coordinates-axial
+const Axial = struct {
+    x: i32 = 0,
+    y: i32 = 0,
 
-fn addVec(v1: Vec, v2: Vec) Vec {
-    return Vec{.x=v1.x + v2.x, .y=v1.y+v2.y};
-}
-
-fn followPath(path: []const Vec) Vec {
-    var res = Vec{.x=0, .y=0};
-    for (path) |v| {
-        res = addVec(res, v);
+    pub fn add(self: Axial, v: Axial) Axial {
+        return self.addXY(v.x, v.y);
     }
-    return res;
-}
 
-fn getAdjacent(v: Vec) [6]Vec {
-    const x = v.x;
-    const y = v.y;
-    return .{
-        Vec{.x=x+1, .y=y-1},
-        Vec{.x=x+1, .y=y},
-        Vec{.x=x, .y=y-1},
-        Vec{.x=x-1, .y=y+1},
-        Vec{.x=x-1, .y=y},
-        Vec{.x=x, .y=y+1},
-    };
-}
+    pub fn addXY(self: Axial, x: i32, y: i32) Axial {
+        return Axial{.x=self.x + x, .y=self.y+y};
+    }
 
-fn parseVectors(s: []const u8, a: *Allocator) ![]Vec {
-    var v = std.ArrayList(Vec).init(a);
+    pub fn getAdjacent(self: Axial) [6]Axial {
+        return .{
+            self.addXY(0, 1),
+            self.addXY(0, -1),
+            self.addXY(1, 0),
+            self.addXY(-1, 0),
+            self.addXY(1, -1),
+            self.addXY(-1, 1),
+        };
+    }
+};
+
+fn parseVectors(s: []const u8, a: *Allocator) ![]Axial {
+    var v = std.ArrayList(Axial).init(a);
     defer v.deinit();
 
     var i: usize = 0;
@@ -45,7 +44,7 @@ fn parseVectors(s: []const u8, a: *Allocator) ![]Vec {
                 else => {},
             }
         }
-        try v.append(Vec{
+        try v.append(Axial{
             .x=if (we*ns>0) 0 else we,
             .y=ns
         });
@@ -54,9 +53,9 @@ fn parseVectors(s: []const u8, a: *Allocator) ![]Vec {
     return v.toOwnedSlice();
 }
 
-const hashVec = std.hash_map.getAutoHashFn(Vec);
-const eqlVec = std.hash_map.getAutoEqlFn(Vec);
-const Floor = std.HashMap(Vec, bool, hashVec, eqlVec, 80);
+const hashVec = std.hash_map.getAutoHashFn(Axial);
+const eqlVec = std.hash_map.getAutoEqlFn(Axial);
+const Floor = std.HashMap(Axial, bool, hashVec, eqlVec, 80);
 
 // remove white tiles
 fn cleanup(floor: *Floor) void {
@@ -69,8 +68,8 @@ fn cleanup(floor: *Floor) void {
     }
 }
 
-fn readInput(a: *Allocator) ![][]Vec {
-    var list = std.ArrayList([]Vec).init(a);
+fn readInput(a: *Allocator) ![][]Axial {
+    var list = std.ArrayList([]Axial).init(a);
     defer list.deinit();
 
     var input = try std.io.getStdIn().readToEndAlloc(a, 1 << 20);
@@ -83,9 +82,17 @@ fn readInput(a: *Allocator) ![][]Vec {
     return list.toOwnedSlice();
 }
 
-fn solve_1(in: [][]const Vec, floor: *Floor) !usize {
-    for (in) |route| {
-        var dest = followPath(route);
+fn followPath(path: []const Axial) Axial {
+    var res = Axial{.x=0, .y=0};
+    for (path) |v| {
+        res = res.add(v);
+    }
+    return res;
+}
+
+fn solve_1(paths: [][]const Axial, floor: *Floor) !usize {
+    for (paths) |path| {
+        var dest = followPath(path);
         var cur = try floor.getOrPut(dest);
         cur.entry.value = if (cur.found_existing) !cur.entry.value else true;
     }
@@ -101,7 +108,7 @@ fn lifeTurn(floor: *Floor, a: *Allocator) !void {
     var it = floor.iterator();
     while (it.next()) |entry| {
         try pending.put(entry.key, entry.value);
-        for (getAdjacent(entry.key)) |v| {
+        for (entry.key.getAdjacent()) |v| {
             try pending.put(v, floor.get(v) orelse false);
         }
     }
@@ -109,7 +116,7 @@ fn lifeTurn(floor: *Floor, a: *Allocator) !void {
     it = pending.iterator();
     while (it.next()) |entry| {
         var count: u8 = 0;
-        for (getAdjacent(entry.key)) |v| {
+        for (entry.key.getAdjacent()) |v| {
             if (pending.get(v) orelse false) { count += 1; }
         }
         if ((entry.value and (count == 0 or count > 2)) or (!entry.value and count == 2)) {
