@@ -27,6 +27,8 @@ I estimated my knowledge of each language by 0 to 4 scale, roughly meaning:
  * [Oleg Yamnikov](https://github.com/yamnikov-oleg/adventofcode2017) (2017)
  * [Laurence Woodman](https://techtinkering.com/articles/advent-of-code-2018-25-days-25-languages/) (2018)
  * [Roza Gutiérrez](https://m.signalvnoise.com/my-polyglot-advent-of-code/) (2019)
+ * [Ágocsi-Kiss Bence](https://github.com/akbence/adventofcode2020) (2020)
+ * [MisterInSayne](https://github.com/MisterInSayne/AdventOfCode2020) (2020)
 
 ### Languages
 
@@ -534,7 +536,7 @@ _Site_: https://ziglang.org/
 _Puzzle_: [Lobby Layout](https://adventofcode.com/2020/day/24). Hexagonal Game of Life.
 
 Never heard of Zig before, but then I saw people doing
-[this]((https://github.com/fyrchik/aoc2020zig) or the [previous](https://github.com/andrewrk/advent-of-code) AoC in it. Let's see what it [promises](https://ziglang.org/#Small-simple-language):
+[this](https://github.com/fyrchik/aoc2020zig) or the [previous](https://github.com/andrewrk/advent-of-code) AoC in it. Let's see what it [promises](https://ziglang.org/#Small-simple-language):
 
   > Focus on debugging your application rather than debugging your programming language knowledge.
 
