@@ -36,13 +36,13 @@ I estimated my knowledge of each language by 0 to 4 scale, roughly meaning:
  | 2   | [Prolog](#day-2-prolog)   | 1 | [Password Philosophy](https://adventofcode.com/2020/day/2) | [Link](02_prolog/solve.pl)  |
  | 3   | [Clojure](#day-3-clojure) | 2 | [Toboggan Trajectory](https://adventofcode.com/2020/day/3) | [Link](03_clojure/src/day03/core.clj) |
  | 4   | [AWK](#day-4-awk)         | 1 | [Password Processing](https://adventofcode.com/2020/day/4) | [Link](04_awk/solve.awk) |
- | 5   | [Z80 assembly](#day-5-z80-assembly) | 2 | [Binary Boarding](https://adventofcode.com/2020/day/5) | [Link](05_z80/solve.asm) |
+ | 5   | [Z80 assembly](#day-5-z80-assembly) | 1 | [Binary Boarding](https://adventofcode.com/2020/day/5) | [Link](05_z80/solve.asm) |
  | 6   | [Nim](#day-6-nim)         | 0 | [Custom Customs](https://adventofcode.com/2020/day/6)   | [Link](06_nim/solve.nim) |
  | 7   | [Raku](#day-7-raku)       | 0 | [Handy Haversack](https://adventofcode.com/2020/day/7)  | [Link](07_raku/solve.pl6) |
  | 8   | [F#](#day-8-f)            | 0 | [Handheld Halting](https://adventofcode.com/2020/day/8) | [Link](08_fsharp/solve.fsx) |
  | 9   | [Pascal](#day-9-pascal)   | 2 |  [Encoding Error](https://adventofcode.com/2020/day/9)  | [Link](09_pascal/solve.pas) |
  | 10  | [Factor](#day-10-factor)  | 0 | [Adapter Array](https://adventofcode.com/2020/day/10)    | [Link](10_factor/solve/solve.factor) |
- | 11  | [x86 assembly](#day-11-x86-assembly) | 2 | [Seating System](https://adventofcode.com/2020/day/11) | [Link](11_x86/solve.asm) |
+ | 11  | [x86 assembly](#day-11-x86-assembly) | 1 | [Seating System](https://adventofcode.com/2020/day/11) | [Link](11_x86/solve.asm) |
  | 12  | [Ruby](#day-12-ruby)      | 1 | [Rain Risk](https://adventofcode.com/2020/day/12)       | [Link](12_ruby/solve.rb)  |
  | 13  | [Julia](#day-13-julia)    | 0 | [Shuttle Search](https://adventofcode.com/2020/day/13)  | [Link](13_julia/solve.jl) |
  | 14  | [Rust](#day-14-rust)      | 1 | [Docking Data](https://adventofcode.com/2020/day/14)    | [Link](14_rust/solve/src/main.rs)  |
@@ -55,6 +55,7 @@ I estimated my knowledge of each language by 0 to 4 scale, roughly meaning:
  | 21  | [Dart](#day-21-dart)       | 2   | [Allergen Assessment](https://adventofcode.com/2020/day/21) | [Link](21_dart/solve.dart) |
  | 22  | [Elixir](#day-22-elixir)   | 0   | [Crab Combat](https://adventofcode.com/2020/day/22) | [Link](22_elixir/solve.exs) |
  | 23  | [Go](#day-23-go)           | 4   | [Crab Cups](https://adventofcode.com/2020/day/23)   | [Link](23_go/solve.go) |
+ | 24  | [Zig](#dat-24-zig)         | 0   | [Lobby Layout](https://adventofcode.com/2020/day/24) | [Link](24_zig/solve.zig) |
 
 ### Day 1: Erlang
 
@@ -127,7 +128,7 @@ I am not sure how idiomatic is the code.
 
 _Site_: https://esolangs.org/wiki/Z80golf (the emulator I used)
 
-_Knowledge_: 2
+_Knowledge_: 1
 
 _Puzzle_: [Binary Boarding](https://adventofcode.com/2020/day/5). Decode ticket numbers and find a vacant seat.
 
@@ -153,7 +154,7 @@ that most of the features that Nim advertises cannot appear in a 50-lines snippe
 try someday. But currently it feels that the authors were pulling all the features they enjoy most
 and I am failing to see the common idea behind the language and the library, which leaves the eclectic impression of
 [Homer Simpson's car](https://static.wikia.nocookie.net/simpsons/images/0/05/TheHomer.png). And oh God, it's case-insensitive.
-Moreover, it ignores underscores in names, so `snake == camel`, if you see, what I mean.
+Moreover, it ignores underscores in names, so it doesn't know a snake from a camel, if you see, what I mean.
 
 [Solution](06_nim/solve.nim) | [Up](#languages)
 
@@ -167,7 +168,7 @@ _Knowledge_: 0
 _Puzzle_: [Handy Haversack](https://adventofcode.com/2020/day/7). Parse and traverse a tree-like structure.
 
 Forget what I said about Nim's being eclectic. Now, this is the proper Frankenstein's monster that evolved
-from a domain-specific language. I recall using Perl more than a decade ago, and I don't remember liking it
+from a once ubiquitous domain-specific language. I recall using Perl more than a decade ago, and I don't remember liking it
 with its `$variable` `@name` `%prefixes`, automagically created variables and million ways to do the same simple
 things, which may be good when you write, but may suck when you read. As for Perl 6, I have never seen it before.
 Few days ago I learned that Perl 6 was renamed to Raku long ago, that's how little I know about it.
@@ -254,7 +255,7 @@ until the time when I can fully understand them.
 
 ### Day 11: x86 assembly
 
-_Knowledge_: 2
+_Knowledge_: 1
 
 _Puzzle_: [Seating System](https://adventofcode.com/2020/day/11). A modified Conway's Game of Life.
 
@@ -514,11 +515,35 @@ _Puzzle_: [Crab Cups](https://adventofcode.com/2020/day/23). Linked Lists with a
 So, the first part is a trap. I did it in the most obvious way, so had to start over. The challenge
 of the second part is that you have to both move values inside a list (where a linked list is a nice choice) and search for values in it
 (where it's not). Not without a hint, I recalled that things often become simpler when you deal with adjacent integer values...
-I won't spoil to much here, see the code.
+I won't spoil too much here, see the code.
 
-As for Go, it's a good example of how you can focus on solving problems you need get solved instead of following
+As for Go, it's a good example of how you can focus on solving problems you need to get solved instead of following
 all the hype trends and do just fine. I really like their stance of implementing just those feature they are really sure they need.
 And it's simple. You learn it in a week or so, and then: where's the advanced part? Advanced Go is to keep using Go
 in the most simple and straightforward way. This is the way.
 
 [Solution](23_go/solve.go) | [Up](#languages)
+
+
+### Day 24. Zig
+
+_Knowledge_: 0
+
+_Site_: https://ziglang.org/
+
+_Puzzle_: [Lobby Layout](https://adventofcode.com/2020/day/24). Hexagonal Game of Life.
+
+Never heard of Zig before, but then I saw [people](https://github.com/andrewrk/advent-of-code) [doing](https://github.com/fyrchik/aoc2020zig)
+this or the previous AoC in it. Let's see what it [promises](https://ziglang.org/#Small-simple-language):
+
+  > Focus on debugging your application rather than debugging your programming language knowledge.
+
+You son of a bitch, I'm in! And, I must say, this was the most interesting discovery of this entire challenge.
+Memory management, type system, `comptime`s, error handling - all looks quite fresh. The language is still in its cradle, so
+the docs, examples and stdlib are a bit sparse sometimes, but it's already enormous amount of work for 4 years.
+Those Zig AoC repos above and stdlib code also helped to understand few basic principles faster.
+5/5, will definitely try again.
+
+The puzzle is yet another Game of Life variation, but was also of educational value,
+at least, I learned about different [coordinate systems](https://www.redblobgames.com/grids/hexagons/#coordinates)
+for hexagonal grids.
