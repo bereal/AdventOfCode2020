@@ -55,7 +55,7 @@ I estimated my knowledge of each language by 0 to 4 scale, roughly meaning:
  | 21  | [Dart](#day-21-dart)       | 2   | [Allergen Assessment](https://adventofcode.com/2020/day/21) | [Link](21_dart/solve.dart) |
  | 22  | [Elixir](#day-22-elixir)   | 0   | [Crab Combat](https://adventofcode.com/2020/day/22) | [Link](22_elixir/solve.exs) |
  | 23  | [Go](#day-23-go)           | 4   | [Crab Cups](https://adventofcode.com/2020/day/23)   | [Link](23_go/solve.go) |
- | 24  | [Zig](#dat-24-zig)         | 0   | [Lobby Layout](https://adventofcode.com/2020/day/24) | [Link](24_zig/solve.zig) |
+ | 24  | [Zig](#day-24-zig)         | 0   | [Lobby Layout](https://adventofcode.com/2020/day/24) | [Link](24_zig/solve.zig) |
 
 ### Day 1: Erlang
 
@@ -547,3 +547,5 @@ Those Zig AoC repos above and stdlib code also helped to understand few basic pr
 The puzzle is yet another Game of Life variation, but was also of educational value,
 at least, I learned about different [coordinate systems](https://www.redblobgames.com/grids/hexagons/#coordinates)
 for hexagonal grids.
+
+[Solution](24_zig/solve.zig) | [Up](#languages)
