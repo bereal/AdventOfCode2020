@@ -29,6 +29,7 @@ I estimated my knowledge of each language by 0 to 4 scale, roughly meaning:
  * [Roza Gutiérrez](https://m.signalvnoise.com/my-polyglot-advent-of-code/) (2019)
  * [Ágocsi-Kiss Bence](https://github.com/akbence/adventofcode2020) (2020)
  * [MisterInSayne](https://github.com/MisterInSayne/AdventOfCode2020) (2020)
+ * [Will Killian](https://github.com/willkill07/AdventOfCode2020) (2020)
 
 ### Languages
 
