@@ -55,9 +55,11 @@ I estimated my knowledge of each language by 0 to 4 scale, roughly meaning:
  | 19  | [JavaScript](#day-19-javascript) | 4 | [Monster Messages](https://adventofcode.com/2020/day/19) | [Link](19_js/solve.js) |
  | 20  | [Scala](#day-20-scala)     | 1   | [Jurassic Jigsaw](https://adventofcode.com/2020/day/20)  | [Link](20_scala/solve.scala) |
  | 21  | [Dart](#day-21-dart)       | 2   | [Allergen Assessment](https://adventofcode.com/2020/day/21) | [Link](21_dart/solve.dart) |
- | 22  | [Elixir](#day-22-elixir)   | 0   | [Crab Combat](https://adventofcode.com/2020/day/22) | [Link](22_elixir/solve.exs) |
- | 23  | [Go](#day-23-go)           | 4   | [Crab Cups](https://adventofcode.com/2020/day/23)   | [Link](23_go/solve.go) |
- | 24  | [Zig](#day-24-zig)         | 0   | [Lobby Layout](https://adventofcode.com/2020/day/24) | [Link](24_zig/solve.zig) |
+ | 22  | [Elixir](#day-22-elixir)   | 0   | [Crab Combat](https://adventofcode.com/2020/day/22)   | [Link](22_elixir/solve.exs) |
+ | 23  | [Go](#day-23-go)           | 4   | [Crab Cups](https://adventofcode.com/2020/day/23)     | [Link](23_go/solve.go) |
+ | 24  | [Zig](#day-24-zig)         | 0   | [Lobby Layout](https://adventofcode.com/2020/day/24)  | [Link](24_zig/solve.zig) |
+ | 25  | [Octave](#day-25-octave)   | 0   | [Combo Breaker](https://adventofcode.com/2020/day/25) | [Link](25_octave/solve.m) |
+
 
 ### Day 1: Erlang
 
@@ -326,7 +328,7 @@ _Site_: https://www.rust-lang.org/
 _Puzzle_: [Docking Data](https://adventofcode.com/2020/day/14). Bit mask manipulations.
 
 Oh my, oh my, finally I did Rust. Was looking forward to it. I believe, Rust is the most
-ambitious programming lanugages of the past decade. It's supposed to be better at everything C++
+ambitious programming lanugage of the past decade. It's supposed to be better at everything C++
 is good at, only faster, safer, more expressive and without the legacy of C.
 But, like C++, it's not an easy language I'd just play with occasionally for some small things.
 Ownership and borrowing, type system, lifetimes - all takes time to understand.
@@ -551,3 +553,19 @@ at least, I learned about different [coordinate systems](https://www.redblobgame
 for hexagonal grids.
 
 [Solution](24_zig/solve.zig) | [Up](#languages)
+
+
+### Day 25. Octave
+
+_Knowledge_: 0
+
+_Site_: https://www.gnu.org/software/octave/
+
+_Puzzle_: [Combo Breaker](https://adventofcode.com/2020/day/25). Diffie-Hellman key exchange.
+
+I decided to try Octave because I expected a scientific package to have more powerful tools for algebra, but no.
+Big integers? Better try Python. Modular exponentiation, at least? All by hands.
+
+Anyway, yay, I have done this, and the challenge is complete! I had a lot of fun, and see you next year!
+
+[Solution](25_octave/solve.m) | [Up](#languages)
