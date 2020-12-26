@@ -30,6 +30,7 @@ I estimated my knowledge of each language by 0 to 4 scale, roughly meaning:
  * [Ágocsi-Kiss Bence](https://github.com/akbence/adventofcode2020) (2020)
  * [MisterInSayne](https://github.com/MisterInSayne/AdventOfCode2020) (2020)
  * [Will Killian](https://github.com/willkill07/AdventOfCode2020) (2020)
+ * [Justin Hill](https://github.com/hiljusti/adventofcode-solutions) (2020)
 
 ### Languages
 
@@ -92,7 +93,7 @@ _Knowledge_: 1
 
 _Puzzle_: [Password Philosophy](https://adventofcode.com/2020/day/2). Match strings against the rules.
 
-Prolog is the languages they taught is in the Uni and since that I tried to use it for some small projects.
+Prolog is one of the languages they taught is in the Uni and since then I tried to use it for some small projects.
 Still, the paradigm shift from function calling to pattern matching is challenging every time. A very nice brain exercise.
 The puzzle had to do with validating the passwords according to certain rules, and pattern matching is a great tool for such tasks.
 
