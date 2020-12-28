@@ -23,8 +23,10 @@ I estimated my knowledge of each language by 0 to 4 scale, roughly meaning:
 
  * [Izzy Miller](https://github.com/izzystardust/advent-solutions) (2016)
  * [Thomas ten Katte](https://github.com/ttencate/aoc2016) (2016)
+ * [Thomas ten Katte](https://github.com/ttencate/aoc2017) (2017, without repeating languages from 2016, so that's 50!)
  * [Benjamin Kraft](https://github.com/benjaminjkraft/aoc2017) (2017)
  * [Oleg Yamnikov](https://github.com/yamnikov-oleg/adventofcode2017) (2017)
+ * [Bert Peters](https://github.com/bertptrs/adventofcode/tree/master/2017) (2017)
  * [Laurence Woodman](https://techtinkering.com/articles/advent-of-code-2018-25-days-25-languages/) (2018)
  * [Roza Gutiérrez](https://m.signalvnoise.com/my-polyglot-advent-of-code/) (2019)
  * [Ágocsi-Kiss Bence](https://github.com/akbence/adventofcode2020) (2020)
