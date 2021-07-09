@@ -22,6 +22,7 @@ I estimated my knowledge of each language by 0 to 4 scale, roughly meaning:
 ### Other People's Attempts
 
  * [Rog3rSm1th](https://github.com/Rog3rSm1th/PolyglotOfCode) (AoC 2015, done in 2021)
+ * [Chris Penner](https://github.com/ChrisPenner/Advent-Of-Code-Polyglot) (2015 and 2016, a collective effort)
  * [Izzy Miller](https://github.com/izzystardust/advent-solutions) (2016)
  * [Thomas ten Katte](https://github.com/ttencate/aoc2016) (2016)
  * [Thomas ten Katte](https://github.com/ttencate/aoc2017) (2017, without repeating languages from 2016, so that's 50!)
@@ -34,6 +35,7 @@ I estimated my knowledge of each language by 0 to 4 scale, roughly meaning:
  * [MisterInSayne](https://github.com/MisterInSayne/AdventOfCode2020) (2020)
  * [Will Killian](https://github.com/willkill07/AdventOfCode2020) (2020)
  * [Justin Hill](https://github.com/hiljusti/adventofcode-solutions) (2020)
+ * [Laurens Duijvesteijn](https://github.com/duijf/polyglot-advent) (2020)
 
 ### Languages
 
