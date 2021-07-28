@@ -36,6 +36,7 @@ I estimated my knowledge of each language by 0 to 4 scale, roughly meaning:
  * [Will Killian](https://github.com/willkill07/AdventOfCode2020) (2020)
  * [Justin Hill](https://github.com/hiljusti/adventofcode-solutions) (2020)
  * [Laurens Duijvesteijn](https://github.com/duijf/polyglot-advent) (2020)
+ * [Tsoding](https://github.com/tsoding/aoc-2020) (2020, with live streaming)
 
 ### Languages
 
