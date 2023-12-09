@@ -39,6 +39,7 @@ I estimated my knowledge of each language by 0 to 4 scale, roughly meaning:
  * [Tsoding](https://github.com/tsoding/aoc-2020) (2020, with live streaming)
  * [Jan Likar](https://github.com/JanLikar/aoc2022-25-in-25) (2022)
  * [Thomas Kellermeier](https://github.com/Chaoste/aoc-2022) (2022)
+ * [Ryan Beltran](https://github.com/rpbeltran/aoc2023) (2023, languages are in alphabetical order!)
 
 ### Languages
 
